@@ -546,11 +546,11 @@
   .phasef-landing-bud { transition: none !important; transform: none !important; }
 }
 
-/* Real landing perch, lowered with BUD-HERO into the safe visual band. */
+/* Real landing perch aligned with Jett inside the safe visual band. */
 .phasef-safe-perch {
   left: 46%;
   top: auto;
-  bottom: calc(var(--phasef-reading-height) + 4svh);
+  bottom: calc(var(--phasef-reading-height) + 9svh);
   width: 58%;
   height: auto;
   object-fit: contain;
@@ -558,7 +558,8 @@
   background: transparent;
   box-shadow: none;
   filter: brightness(.78) saturate(.82) drop-shadow(0 14px 22px #0009);
-  transform: rotate(-3deg);
+  transform: rotate(3deg) scaleX(-1);
+  transform-origin: center;
 }
 .phasef-safe-perch > i { display: none; }
 .phasef-landing-bud {
@@ -593,7 +594,7 @@
 .phasef-air > span { right: 6%; color: var(--turquoise); }
 
 @media (min-width: 900px) {
-  .phasef-safe-perch { left: 55%; bottom: 11svh; width: 39%; }
+  .phasef-safe-perch { left: 55%; bottom: 22svh; width: 39%; }
   .phasef-landing-bud { left: 64%; bottom: 15svh; width: 18%; height: 43%; }
   .phasef-day-dial { left: 44%; top: 15%; width: min(20vw, 230px); }
   .phasef-air { left: 43%; top: 17%; width: min(25vw, 275px); height: 210px; }

@@ -118,21 +118,18 @@
   min-height: 190px;
   overflow: hidden;
   color: #233d31;
-  border: 1px solid #58766538;
+  border: 1px solid #58766573;
   border-radius: 18px;
-  background:
-    linear-gradient(135deg, transparent 0 12%, #58766512 12.2% 12.45%, transparent 12.7%),
-    repeating-linear-gradient(0deg, transparent 0 38px, #185aa80b 39px 40px),
-    linear-gradient(135deg, #fff8df, #e9f0d9 58%, #d4e3ca);
-  box-shadow: 0 22px 65px #0003;
+  background: #d8e3b8;
+  box-shadow: 0 22px 65px #0004;
 }
-.aussiecare-signature::after { content: ''; position: absolute; inset: 7%; border: 1px solid #5876651e; pointer-events: none; }
-.aussiecare-signature-watermark { position: absolute; left: 35%; top: -9%; width: 21%; opacity: .07; mix-blend-mode: multiply; }
-.aussiecare-signature-copy { position: absolute; z-index: 2; left: 7%; top: 30%; width: 59%; }
-.aussiecare-signature-copy > strong { display: block; color: #263d31; font: 800 clamp(48px, 10vw, 102px)/.78 'Brush Script MT','Segoe Script',cursive; letter-spacing: -.08em; transform: rotate(-4deg); transform-origin: left center; }
-.aussiecare-signature-copy p { margin: 22px 0 0 7%; color: #2f493d; font: 500 clamp(10px, 1.7vw, 18px)/1 Georgia, serif; }
+.aussiecare-signature::after { content: ''; position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; height: 7px; background: #c98d46; pointer-events: none; }
+.aussiecare-signature-anchor { position: absolute; z-index: 1; left: 31%; top: -14%; color: #233d31; opacity: .09; font: 400 clamp(150px, 29vw, 265px)/1 Georgia, serif; transform: rotate(-3deg); pointer-events: none; }
+.aussiecare-signature-copy { position: absolute; z-index: 3; left: 7%; top: 22%; width: 59%; }
+.aussiecare-signature-name { display: block; width: 91%; height: auto; object-fit: contain; object-position: left center; filter: drop-shadow(0 5px 10px #0003); }
+.aussiecare-signature-copy p { margin: 13px 0 0 7%; color: #2f493d; font: 500 clamp(10px, 1.7vw, 18px)/1 Georgia, serif; }
 .aussiecare-signature-copy i { color: var(--yellow); font-style: normal; }
-.aussiecare-signature-copy b { color: var(--cobalt); font-weight: 650; }
+.aussiecare-signature-copy b { color: var(--cobalt); font-weight: 700; }
 .aussiecare-signature-budgies { position: absolute; z-index: 2; right: 3%; bottom: -12%; width: 39%; height: 79%; object-fit: contain; object-position: center bottom; mix-blend-mode: multiply; }
 .aussiecare-signature[data-compact='true'] { min-height: 150px; border-radius: 13px; }
 
@@ -142,9 +139,10 @@
   .aussiecare-explore-brand small { max-width: 118px; }
   .aussiecare-explore-actions { gap: 5px; }
   .aussiecare-signature { aspect-ratio: 1.7; min-height: 205px; }
-  .aussiecare-signature-copy { top: 29%; }
-  .aussiecare-signature-copy > strong { font-size: clamp(45px, 15vw, 72px); }
-  .aussiecare-signature-copy p { width: 125%; margin-top: 17px; font-size: 9px; }
+  .aussiecare-signature-anchor { left: 28%; top: -5%; font-size: clamp(142px, 49vw, 215px); }
+  .aussiecare-signature-copy { top: 24%; }
+  .aussiecare-signature-name { width: 95%; }
+  .aussiecare-signature-copy p { width: 125%; margin-top: 11px; font-size: 9px; }
   .aussiecare-signature-budgies { right: -3%; width: 45%; height: 76%; }
 }
 

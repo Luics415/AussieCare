@@ -454,7 +454,7 @@ function HomeView({ navigate, checklist }: { navigate: Navigate; checklist: Chec
         <span className="consulta-story-rule" aria-hidden="true" />
         <p className="consulta-kicker">DOS MODOS · UNA MISMA HISTORIA</p>
         <h2>¿Prefieres descubrirlo<br />en movimiento?</h2>
-        <p>Vuelve a la película y deja que BUD-HERO te guíe capítulo por capítulo.</p>
+        <p>Vuelve a la película y deja que Jett te guíe capítulo por capítulo.</p>
         <a href="/?retorno=1">VER MODO EXPLORAR <span aria-hidden="true">↗</span></a>
       </section>
     </div>

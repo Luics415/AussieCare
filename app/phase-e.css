@@ -482,13 +482,14 @@
 }
 .phasee-trust-perch {
   z-index: 5;
-  left: 34%;
-  top: 48%;
-  width: 66%;
+  left: 28%;
+  top: 41%;
+  width: 72%;
   height: auto;
   object-fit: contain;
   filter: brightness(.74) saturate(.82) drop-shadow(0 16px 22px #0009);
-  transform: rotate(-2deg);
+  transform: rotate(2deg) scaleX(-1);
+  transform-origin: center;
 }
 .phasee-trust-bud {
   z-index: 7;
@@ -542,8 +543,8 @@
 
 @media (min-width: 900px) {
   .health-emergency { left: 42%; right: 3%; top: 10%; height: 72svh; }
-  .phasee-trust-perch { left: 48%; top: 53%; width: 48%; }
-  .phasee-trust-bud { right: 8%; top: 15%; width: 25%; height: 42%; }
+  .phasee-trust-perch { left: 43%; top: 29%; width: 55%; }
+  .phasee-trust-bud { left: auto; right: 8%; top: 15%; width: 25%; height: 42%; }
   .phasee-trust-hand { left: 28%; top: 35%; width: 43%; height: 29%; }
   .trust-reward-real { left: 57%; top: 37%; width: min(10vw, 112px); height: 21%; }
   .trust-invitation { left: 54%; right: 8%; top: 22%; height: 38%; }

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     locale: 'es_MX',
     title: 'AussieCare · Periquitos Australianos',
     description: 'Guía visual para comprender y cuidar a tu periquito.',
-    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'BUD-HERO en un paisaje australiano al amanecer' }],
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Jett en un paisaje australiano al amanecer' }],
   },
   twitter: {
     card: 'summary_large_image',

@@ -143,7 +143,7 @@ export const careSources = {
 } as const;
 
 export const phaseCBeats: CareBeat[] = [
-  { id: 'bridge', at: 0, kicker: 'TRANSICIÓN', title: 'De la rama a casa', copy: 'El paisaje queda atrás. BUD-HERO entra en ROOM-BASE.', sourceIds: [] },
+  { id: 'bridge', at: 0, kicker: 'TRANSICIÓN', title: 'De la rama a casa', copy: 'El paisaje queda atrás. Jett entra en ROOM-BASE.', sourceIds: [] },
   { id: 'home', at: .05, kicker: '02 · MI HOGAR', title: 'Un espacio seguro', copy: 'Primero, el lugar: protegido y lejos de cocina, humo y corrientes.', sourceIds: ['rspcaEnvironment'] },
   { id: 'proportion', at: .11, kicker: 'PROPORCIÓN', title: 'Más larga que alta', copy: 'El movimiento principal ocurre en horizontal.', sourceIds: ['vcaHousing'] },
   { id: 'base', at: .17, kicker: 'BASE', title: 'Firme y fácil de limpiar', copy: 'Una bandeja accesible simplifica el cuidado diario.', sourceIds: ['vcaHousing'] },
@@ -152,7 +152,7 @@ export const phaseCBeats: CareBeat[] = [
   { id: 'perches', at: .38, kicker: 'PERCHAS', title: 'Naturales y variadas', copy: 'Distintos diámetros y ángulos reparten la presión en las patas.', sourceIds: ['aavBasic'] },
   { id: 'bowls', at: .45, kicker: 'DISTRIBUCIÓN', title: 'Agua, comida y paso libre', copy: 'Nunca debajo de una percha; siempre fáciles de retirar y lavar.', sourceIds: ['rspcaEnvironment', 'vcaHousing'] },
   { id: 'ready', at: .52, kicker: 'LISTO', title: 'Un hogar pensado para moverse', copy: 'Los accesorios acompañan: no deben abarrotar el espacio.', sourceIds: ['msdHome'] },
-  { id: 'perch-transition', at: .59, kicker: 'TRANSICIÓN', title: 'La percha cambia de escala', copy: 'La madera nos conduce al siguiente capítulo.', sourceIds: [] },
+  { id: 'perch-transition', at: .59, kicker: 'TRANSICIÓN', title: 'Del hogar al juego', copy: 'La jaula se desvanece y deja espacio para explorar sus objetos.', sourceIds: [] },
   { id: 'toys', at: .65, kicker: '03 · JUEGA CONMIGO', title: 'Jugar también es cuidar', copy: 'Pocos objetos seguros, presentados de forma gradual.', sourceIds: ['rspcaEnvironment', 'rspcaEnrichment'] },
   { id: 'foraging', at: .71, kicker: 'FORRAJEO · EXPLORA', title: 'Buscar también es jugar', copy: 'Empieza con alimento visible y aumenta el reto poco a poco.', sourceIds: ['aavForaging'] },
   { id: 'wood', at: .77, kicker: 'MADERA · NATURAL', title: 'Roer, trepar, descubrir', copy: 'Varía formas y texturas sin ocupar el espacio de vuelo.', sourceIds: ['rspcaEnrichment'] },
@@ -185,7 +185,7 @@ export const phaseDBeats: CareBeat[] = [
 export const nutritionDisclaimer = 'Guía educativa: edad, salud y condición corporal cambian las necesidades. Consulta a un veterinario especializado en aves.';
 
 export const phaseEBeats: CareBeat[] = [
-  { id: 'health-bridge', at: 0, kicker: 'TRANSICIÓN', title: 'Lo limpio permite observar', copy: 'BUD-HERO vuelve a posarse. Ahora la atención cambia del espacio al ave.', sourceIds: [] },
+  { id: 'health-bridge', at: 0, kicker: 'TRANSICIÓN', title: 'Lo limpio permite observar', copy: 'Jett vuelve a posarse. Ahora la atención cambia del espacio al ave.', sourceIds: [] },
   { id: 'health-title', at: .05, kicker: '06 · ¿ESTOY BIEN?', title: 'Conoce su normal', copy: 'Actividad, postura, voz, sueño, comida y agua forman su referencia.', sourceIds: ['msdBirdIllness'] },
   { id: 'health-baseline', at: .105, kicker: 'NORMAL', title: 'Alerta y equilibrado', copy: 'Su postura y actividad habituales son el punto de comparación.', sourceIds: ['msdBirdIllness'] },
   { id: 'health-routine', at: .16, kicker: 'NORMAL · RUTINA', title: 'Mira el conjunto', copy: 'Aprende cuánto come, bebe, vocaliza y se mueve cada día.', sourceIds: ['msdBirdIllness', 'vcaBirdIllness'] },
@@ -205,13 +205,13 @@ export const phaseEBeats: CareBeat[] = [
   { id: 'trust-reinforce', at: .89, kicker: 'REFUERZA', title: 'Premia de inmediato', copy: 'Una voz suave y una recompensa llegan justo después del intento correcto.', sourceIds: ['rspcaTraining'] },
   { id: 'trust-short', at: .93, kicker: 'SESIONES BREVES', title: 'Termina con calma', copy: 'Repite poco a poco y detente antes de que pierda interés o se estrese.', sourceIds: ['rspcaTraining'] },
   { id: 'flight-ready', at: .965, kicker: 'ANTES DE VOLAR', title: 'Prepara la habitación', copy: 'Puertas, ventanas, ventiladores y otros riesgos se revisan antes de abrir la jaula.', sourceIds: ['aavHousehold'] },
-  { id: 'explore-exit', at: .988, kicker: '08 · DÉJAME EXPLORAR', title: 'Ahora sí: espacio para volar', copy: 'BUD-HERO despega hacia el mismo ROOM-BASE, preparado para revelar sus peligros.', sourceIds: [] },
+  { id: 'explore-exit', at: .988, kicker: '08 · DÉJAME EXPLORAR', title: 'Ahora sí: espacio para volar', copy: 'Jett despega hacia el mismo ROOM-BASE, preparado para revelar sus peligros.', sourceIds: [] },
 ];
 
 export const healthDisclaimer = 'Estas señales no identifican una enfermedad. No administres medicamentos ni tratamientos sin indicación veterinaria: contacta a un profesional con experiencia en aves.';
 
 export const phaseFBeats: CareBeat[] = [
-  { id: 'flight-bridge', at: 0, kicker: 'TRANSICIÓN', title: 'El vuelo empieza aquí', copy: 'BUD-HERO queda suspendido mientras ROOM-BASE se prepara a su alrededor.', sourceIds: [] },
+  { id: 'flight-bridge', at: 0, kicker: 'TRANSICIÓN', title: 'El vuelo empieza aquí', copy: 'Jett queda suspendido mientras ROOM-BASE se prepara a su alrededor.', sourceIds: [] },
   { id: 'explore-title', at: .045, kicker: '08 · DÉJAME EXPLORAR', title: 'Volar también se prepara', copy: 'La libertad empieza con una habitación revisada de extremo a extremo.', sourceIds: ['aavHousehold', 'msdHousehold'] },
   { id: 'preflight', at: .09, kicker: 'ANTES DE ABRIR', title: 'Revisa toda su ruta', copy: 'Haz una vuelta de seguridad y corrige cada riesgo antes de abrir la jaula.', sourceIds: ['aavHousehold', 'rspcaEnvironment'] },
   { id: 'window', at: .135, kicker: 'VENTANAS + ESPEJOS', title: 'Cerrados y visibles', copy: 'Usa cortina, malla o marcas para que el cristal no parezca aire.', sourceIds: ['msdHousehold', 'aavHousehold'] },
@@ -239,7 +239,7 @@ export const phaseFBeats: CareBeat[] = [
 export const domesticSafetyDisclaimer = 'Si hubo exposición a humo o vapores, o aparece dificultad respiratoria, busca atención veterinaria aviar inmediata.';
 
 export const phaseGBeats: CareBeat[] = [
-  { id: 'language-bridge', at: 0, kicker: 'TRANSICIÓN', title: 'La habitación despierta', copy: 'El amanecer conserva el mismo encuadre. Ahora BUD-HERO ocupa toda tu atención.', sourceIds: [] },
+  { id: 'language-bridge', at: 0, kicker: 'TRANSICIÓN', title: 'La habitación despierta', copy: 'El amanecer conserva el mismo encuadre. Ahora Jett ocupa toda tu atención.', sourceIds: [] },
   { id: 'language-title', at: .075, kicker: '10 · APRENDE MI LENGUAJE', title: 'Su cuerpo también habla', copy: 'Voz, plumas, postura y mirada se entienden mejor cuando las lees juntas.', sourceIds: ['aavWelfare'] },
   { id: 'baseline', at: .13, kicker: 'PRIMERA PISTA', title: 'Empieza por su normal', copy: 'Conoce su rutina antes de interpretar un cambio: cada periquito tiene su propio ritmo.', sourceIds: ['msdBirdIllness', 'vcaBirdIllness'] },
   { id: 'vocalization', at: .185, kicker: 'NORMAL · VOZ', title: 'Cantar mantiene el contacto', copy: 'Trinos, charla y llamadas forman parte de su vida social, sobre todo al amanecer y al atardecer.', sourceIds: ['aavVocalization'] },
@@ -254,8 +254,8 @@ export const phaseGBeats: CareBeat[] = [
   { id: 'attention', at: .665, kicker: 'ATENCIÓN', title: 'El conjunto cambia la urgencia', copy: 'Vómito, debilidad, dificultad respiratoria, sangrado o incapacidad para posarse requieren ayuda veterinaria.', sourceIds: ['vcaBirdIllness', 'msdBirdIllness'] },
   { id: 'change', at: .72, kicker: 'ATENCIÓN · SU NORMAL', title: 'El cambio repentino importa', copy: 'Menos voz, más sueño, menos actividad o pérdida de interés pueden aparecer antes de que el problema sea evidente.', sourceIds: ['aavSigns', 'msdBirdIllness'] },
   { id: 'context', at: .775, kicker: 'LEE EL PATRÓN', title: 'Contexto, duración y cambio', copy: 'Observa, compara y responde. Una conducta aislada no es un diagnóstico.', sourceIds: ['aavWelfare', 'msdBirdIllness'] },
-  { id: 'flock-morph', at: .83, kicker: 'YA SABES MIRAR', title: 'Las pistas forman una historia', copy: 'Los puntos se desprenden de BUD-HERO y vuelven a convertirse en bandada.', sourceIds: [] },
-  { id: 'australia-return', at: .87, kicker: 'REGRESO', title: 'BUD-HERO vuelve al horizonte', copy: 'Se aleja hacia la bandada y el paisaje que abrió la película. El círculo se cierra despacio.', sourceIds: [] },
+  { id: 'flock-morph', at: .83, kicker: 'YA SABES MIRAR', title: 'Las pistas forman una historia', copy: 'Los puntos se desprenden de Jett y vuelven a convertirse en bandada.', sourceIds: [] },
+  { id: 'australia-return', at: .87, kicker: 'REGRESO', title: 'Jett vuelve al horizonte', copy: 'Se aleja hacia la bandada y el paisaje que abrió la película. El círculo se cierra despacio.', sourceIds: [] },
   { id: 'finale', at: .965, kicker: 'FIN · EL PRINCIPIO', title: 'Aprender a entenderlo', copy: 'Observar, respetar y responder también son formas de cuidado.', sourceIds: [] },
 ];
 

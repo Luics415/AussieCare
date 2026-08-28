@@ -69,10 +69,10 @@ const BEAT_WORD: Record<string, string> = {
 };
 
 const POSE_LABEL: Record<BehaviorPose, string> = {
-  singing: 'BUD-HERO vocalizando',
-  preening: 'BUD-HERO acicalando sus plumas',
-  foraging: 'BUD-HERO buscando alimento',
-  curious: 'BUD-HERO observando con curiosidad',
+  singing: 'Jett vocalizando',
+  preening: 'Jett acicalando sus plumas',
+  foraging: 'Jett buscando alimento',
+  curious: 'Jett observando con curiosidad',
 };
 
 const POSE_ASSET: Record<BehaviorPose, string> = {
@@ -159,8 +159,8 @@ export default function PhaseG({ onProgress, onBeatChange, onSceneState, onResta
 
         <div className="phaseg-bird-field" aria-hidden="true" style={{ opacity: behaviorIn, transform: `translate3d(0, ${(1 - behaviorIn) * 2.5}%, 0) scale(${1 - flockMorph * .16})` }}>
           {pose ? <BehaviorSprite pose={pose} /> : null}
-          {useFluffed ? <img className="phaseg-fluffed-bud" src="/assets/bud-hero-fluffed-scene-v2.webp" alt="BUD-HERO con el plumaje esponjado" loading="lazy" decoding="async" /> : null}
-          {usePerched ? <img className="phaseg-perched-bud" src="/assets/bud-hero-perched-v3.webp" alt="BUD-HERO posado mientras se observa su lenguaje corporal" loading="lazy" decoding="async" /> : null}
+          {useFluffed ? <img className="phaseg-fluffed-bud" src="/assets/bud-hero-fluffed-scene-v2.webp" alt="Jett con el plumaje esponjado" loading="lazy" decoding="async" /> : null}
+          {usePerched ? <img className="phaseg-perched-bud" src="/assets/bud-hero-perched-v3.webp" alt="Jett posado mientras se observa su lenguaje corporal" loading="lazy" decoding="async" /> : null}
           <div className="phaseg-feathers" data-visible={isMolt ? 'true' : 'false'} aria-hidden="true">{Array.from({ length: 5 }, (_, index) => <i key={index} style={{ '--feather': index } as CSSProperties} />)}</div>
         </div>
 

@@ -7,7 +7,7 @@ La licencia MIT de `LICENSE` se aplica al código fuente y a la documentación t
 Salvo que un aviso individual indique otra cosa, quedan excluidos de MIT:
 
 - el nombre visual, logotipo e iconos de AussieCare;
-- BUD-HERO y sus hojas de consistencia;
+- Jett y sus hojas de consistencia;
 - ilustraciones, escenas, fondos, fotografías compuestas y sprites;
 - archivos de `art/`, `public/assets/`, `public/brand/` y `docs/screenshots/`;
 - la composición de la firma y el banner de Luics415;
@@ -23,7 +23,7 @@ Varias imágenes fueron creadas con herramientas de generación de imágenes baj
 
 ## Material suministrado por el propietario
 
-`art/brand/signature-budgies-user-supplied.png` y su derivado optimizado fueron suministrados por el propietario para esta identidad. No se ofrece una sublicencia independiente sobre ese material. El propietario debe confirmar los derechos necesarios antes de cualquier distribución comercial o reutilización fuera de AussieCare.
+`art/brand/signature-budgies-user-supplied.png` y su derivado optimizado, así como `art/brand/luics415-signature-user-supplied.png` y su derivado optimizado `public/brand/luics415-signature.webp`, fueron suministrados por el propietario para esta identidad. No se ofrece una sublicencia independiente sobre esos materiales. El propietario debe confirmar los derechos necesarios antes de cualquier distribución comercial o reutilización fuera de AussieCare.
 
 ## Excepción de audio
 

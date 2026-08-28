@@ -340,7 +340,7 @@
   margin: 12px 0 10px;
   aspect-ratio: 2.15;
 }
-.phaseg-finale > .aussiecare-signature .aussiecare-signature-copy > strong { font-size: clamp(38px, 11vw, 67px); }
+.phaseg-finale > .aussiecare-signature .aussiecare-signature-name { width: 88%; }
 .phaseg-finale > .aussiecare-signature .aussiecare-signature-copy p { margin-top: 16px; font-size: 8px; }
 
 @media (max-width: 420px) {

@@ -1,6 +1,6 @@
 {
   "name": "aussiecare-pwa",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "PWA mobile-first y offline para aprender cuidados responsables del periquito australiano.",
   "private": true,
   "license": "MIT",

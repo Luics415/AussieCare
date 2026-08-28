@@ -7,7 +7,6 @@ import { useSceneProgress } from './use-scene-progress';
 
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 const range = (progress: number, start: number, end: number) => clamp((progress - start) / (end - start));
-const windowed = (progress: number, start: number, end: number) => range(progress, start, start + .016) * (1 - range(progress, end - .016, end));
 
 type PhaseCProps = {
   onProgress: (progress: number) => void;
@@ -38,9 +37,9 @@ export default function PhaseC({ onProgress, onBeatChange }: PhaseCProps) {
   const structure = range(progress, .24, .31);
   const door = range(progress, .31, .38);
   const perches = range(progress, .38, .45);
-  const bowls = range(progress, .45, .52);
+  const perchDetailOpacity = .82 * range(progress, .38, .392) * (1 - range(progress, .43, .445));
+  const bowls = range(progress, .435, .451) * (1 - range(progress, .519, .535));
   const ready = range(progress, .52, .58);
-  const bridge = range(progress, .59, .65);
   const toys = range(progress, .63, .69);
   const ropeRisk = range(progress, .855, .884);
   const mirrorObserve = range(progress, .91, .946);
@@ -55,7 +54,7 @@ export default function PhaseC({ onProgress, onBeatChange }: PhaseCProps) {
         <div className="phasec-room" aria-hidden="true" style={{ opacity: 1 - range(progress, .61, .7) }}>
           <img
             src="/assets/room-base-empty-v3.webp"
-            alt="ROOM-BASE, la habitación modular donde se prepara el hogar de BUD-HERO"
+            alt="ROOM-BASE, la habitación modular donde se prepara el hogar de Jett"
             loading="lazy"
             decoding="async"
             style={{ transform: `scale(${1.06 + range(progress, 0, .55) * .06}) translateX(${range(progress, 0, .55) * -1.4}%)` }}
@@ -72,14 +71,10 @@ export default function PhaseC({ onProgress, onBeatChange }: PhaseCProps) {
             <div className="cage-feature cage-feature-door" style={{ opacity: door }}><i /><span>CIERRE</span></div>
             <div className="cage-feature cage-feature-perches" style={{ opacity: perches }}><i /><span>RAMAS NATURALES</span></div>
             <div className="cage-feature cage-feature-bowls" style={{ opacity: bowls }}><i /><span>RECIPIENTES</span></div>
-            <img className="cage-natural-perch-detail" src="/assets/natural-perch-v1.webp" alt="" loading="lazy" decoding="async" style={{ opacity: perches * (1 - ready) }} />
+            <img className="cage-natural-perch-detail" src="/assets/natural-perch-v1.webp" alt="" loading="lazy" decoding="async" style={{ opacity: perchDetailOpacity }} />
             <img className="cage-bud" src="/assets/bud-hero-perched-v3.webp" alt="" loading="lazy" decoding="async" style={{ opacity: ready, transform: `translateY(${(1 - ready) * -20}px) scale(${.58 + ready * .08})` }} />
           </div>
           <div className="cage-airway" style={{ opacity: ready }}><span>centro libre para moverse</span></div>
-        </div>
-
-        <div className="phasec-bridge" aria-hidden="true" style={{ opacity: windowed(progress, .57, .67) }}>
-          <i style={{ transform: `translate(-50%, -50%) scaleX(${1 + bridge * 7}) scaleY(${1 + bridge * 2.2})` }} />
         </div>
 
         <div className="phasec-toy-scene" aria-hidden="true" style={{ opacity: toys }}>

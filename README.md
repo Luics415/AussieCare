@@ -42,7 +42,7 @@ No utiliza cuentas, correo, inicio de sesión, base de datos ni un backend innec
 - Película reversible: cada pose, capa y transición se deriva del progreso de scroll.
 - ROOM-BASE modular: el mismo entorno cambia por iluminación, estado y elementos independientes.
 - Jaula, perchas, limpieza, urgencia y secuencias de confianza compuestas por capas separadas.
-- Identidad consistente de BUD-HERO: cabeza amarilla, plumaje verde, marcas negras y mejillas azul cobalto.
+- Identidad consistente de Jett: cabeza amarilla, plumaje verde, marcas negras y mejillas azul cobalto.
 - Paisaje sonoro opcional con control compacto de encendido y volumen.
 - Píos y canto integrados con una grabación marcada como dominio público por su fuente.
 - Consulta con 53 fichas, categorías, relacionados y fuentes por ficha.

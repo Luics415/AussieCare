@@ -1,4 +1,4 @@
-const VERSION = 'aussiecare-final-v1';
+const VERSION = 'aussiecare-final-v3';
 const PREFIX = 'aussiecare-';
 const LEGACY_PREFIXES = ['undulatus-'];
 const CORE_CACHE = `${PREFIX}core-${VERSION}`;
@@ -17,6 +17,7 @@ const CORE_ASSETS = [
   '/assets/bud-hero-curious-v1.webp',
   '/assets/australia-master.webp',
   '/brand/aussiecare-icon.webp',
+  '/brand/luics415-signature.webp',
   '/brand/signature-budgies.webp',
 ];
 const CINEMATIC_ASSETS = [

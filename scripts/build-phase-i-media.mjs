@@ -88,9 +88,32 @@ await sharp(resolve(brandSourceRoot, 'signature-budgies-user-supplied.png'))
   .webp({ quality: 92, alphaQuality: 100 })
   .toFile(resolve(brandRoot, 'signature-budgies.webp'));
 
+const signatureCrop = { left: 35, top: 50, width: 555, height: 220 };
+const signatureSource = resolve(brandSourceRoot, 'luics415-signature-user-supplied.png');
+const { data: signatureLuminance, info: signatureInfo } = await sharp(signatureSource)
+  .extract(signatureCrop)
+  .grayscale()
+  .raw()
+  .toBuffer({ resolveWithObject: true });
+const signatureRgba = Buffer.alloc(signatureInfo.width * signatureInfo.height * 4);
+
+for (let index = 0; index < signatureLuminance.length; index += 1) {
+  const outputIndex = index * 4;
+  const alpha = Math.max(0, Math.min(255, Math.round((175 - signatureLuminance[index]) * 4)));
+  signatureRgba[outputIndex] = 35;
+  signatureRgba[outputIndex + 1] = 61;
+  signatureRgba[outputIndex + 2] = 49;
+  signatureRgba[outputIndex + 3] = alpha;
+}
+
+await sharp(signatureRgba, { raw: { width: signatureInfo.width, height: signatureInfo.height, channels: 4 } })
+  .trim({ background: { r: 35, g: 61, b: 49, alpha: 0 } })
+  .webp({ quality: 94, alphaQuality: 100 })
+  .toFile(resolve(brandRoot, 'luics415-signature.webp'));
+
 await sharp(resolve(sourceRoot, 'aussiecare-og-generated.png'))
   .resize(1200, 630, { fit: 'cover', position: 'centre' })
   .png({ compressionLevel: 9, adaptiveFiltering: true })
   .toFile(resolve(publicRoot, 'og.png'));
 
-console.log(`Optimized ${filmAssets.length} film assets, brand media, five app icons, and the 1200x630 social card.`);
+console.log(`Optimized ${filmAssets.length} film assets, signature media, five app icons, and the 1200x630 social card.`);

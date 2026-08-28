@@ -21,6 +21,13 @@ const FOOD_FOCUS: Record<string, { x: number; y: number; size?: number; warning?
   chocolate: { x: 77, y: 69, size: 150, warning: true },
 };
 
+const CLEANING_VISUALS = [
+  { key: 'bowls', label: 'LAVA · ENJUAGA', description: 'Recipientes de acero lavados con agua y cepillo', x: 1, y: 0, start: .765, hold: .825, end: .84 },
+  { key: 'liner', label: 'PAPEL NUEVO', description: 'Bandeja con papel limpio para el cambio diario', x: 0, y: 0, start: .825, hold: .885, end: .9 },
+  { key: 'surfaces', label: 'LIMPIA · SECA', description: 'Percha natural lavada, enjuagada y secada', x: 0, y: 1, start: .885, hold: .945, end: .96 },
+  { key: 'ready', label: 'HOGAR LISTO', description: 'Jaula limpia y preparada para revisar la salud', x: 1, y: 1, start: .945, hold: 1, end: 1 },
+] as const;
+
 type PhaseDProps = {
   onProgress: (progress: number) => void;
   onBeatChange: (beatIndex: number) => void;
@@ -54,9 +61,6 @@ export default function PhaseD({ onProgress, onBeatChange }: PhaseDProps) {
   const warning = beatIndex >= 9 && beatIndex <= 11;
   const cleanTone = beatIndex >= 13;
   const foodFocus = FOOD_FOCUS[beat.id];
-  const cleaningStep = beat.id === 'clean-bowls' ? 1 : beat.id === 'surfaces' ? 2 : beat.id === 'health-exit' ? 3 : 0;
-  const cleaningStepX = cleaningStep % 2;
-  const cleaningStepY = Math.floor(cleaningStep / 2);
 
   return (
     <section className="phased-experience" id="phase-d" ref={sectionRef} aria-label="Fase D: Lo que como y Mi espacio limpio">
@@ -113,12 +117,19 @@ export default function PhaseD({ onProgress, onBeatChange }: PhaseDProps) {
           <img className="phased-clean-room" src="/assets/room-base-empty-v3.webp" alt="" loading="lazy" decoding="async" style={{ opacity: .74 + observe * .16, transform: `scale(${1.04 - observe * .015})`, filter: `saturate(${.62 + surfaces * .34}) brightness(${.68 + surfaces * .22})` }} />
           <div className="clean-room-grade" />
           <img className="phased-clean-cage-product" src="/assets/aussiecare-cage-v1.webp" alt="" loading="lazy" decoding="async" style={{ opacity: .9 - observe * .2, transform: `translateY(${(1 - cleanScene) * 2}%) scale(${.94 + surfaces * .025})` }} />
-          <div className="cleaning-step-visual" role="img" aria-label={cleaningStep === 0 ? 'Bandeja con papel limpio' : cleaningStep === 1 ? 'Recipientes de acero lavados con agua y cepillo' : cleaningStep === 2 ? 'Percha natural lavada y secada' : 'Jaula limpia y preparada'}>
-            <img src="/assets/cage-cleaning-steps-v1.webp" alt="" loading="lazy" decoding="async" style={{ transform: `translate(${-cleaningStepX * 50}%, ${-cleaningStepY * 50}%)` }} />
-            <b>{cleaningStep === 0 ? 'PAPEL NUEVO' : cleaningStep === 1 ? 'LAVA · ENJUAGA' : cleaningStep === 2 ? 'LIMPIA · SECA' : 'HOGAR LISTO'}</b>
-          </div>
+          {CLEANING_VISUALS.map((visual) => {
+            const enter = range(progress, visual.start, visual.start + .015);
+            const exit = visual.end === 1 ? 0 : range(progress, visual.hold, visual.end);
+            return (
+              <div className="cleaning-step-visual" key={visual.key} role="img" aria-label={visual.description} style={{ opacity: enter * (1 - exit) }}>
+                <div className="cleaning-step-window">
+                  <img src="/assets/cage-cleaning-steps-v1.webp" alt="" loading="lazy" decoding="async" style={{ transform: `translate(${-visual.x * 50}%, ${-visual.y * 50}%)` }} />
+                </div>
+                <b>{visual.label}</b>
+              </div>
+            );
+          })}
           <div className="no-aerosol" style={{ opacity: range(progress, .9, .94) * (1 - range(progress, .955, .98)) }}><i>×</i><span>sin aerosoles<br/>cerca del ave</span></div>
-          <img className="clean-bud" src="/assets/bud-hero-perched-v3.webp" alt="" loading="lazy" decoding="async" style={{ opacity: observe, transform: `translateY(${(1 - observe) * 22}px) scale(${.9 + observe * .1})` }} />
         </div>
 
         <div className="phasec-reading phased-reading" data-warning={warning} data-clean={cleanTone}>

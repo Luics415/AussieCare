@@ -5,13 +5,13 @@ type AussieCareSignatureProps = {
 
 export default function AussieCareSignature({ compact = false }: AussieCareSignatureProps) {
   return (
-    <section className="aussiecare-signature" data-compact={compact ? 'true' : 'false'} aria-label="Firma de Luics415 para AussieCare">
-      <img className="aussiecare-signature-watermark" src="/brand/aussiecare-icon.webp" alt="" aria-hidden="true" />
+    <div className="aussiecare-signature" data-compact={compact ? 'true' : 'false'} role="group" aria-label="Firma de Luics415 para AussieCare">
+      <span className="aussiecare-signature-anchor" aria-hidden="true">☥</span>
       <div className="aussiecare-signature-copy">
-        <strong>Luics415</strong>
+        <img className="aussiecare-signature-name" src="/brand/luics415-signature.webp" alt="Luics415" />
         <p>Software Developer <i>·</i> <b>AussieCare</b></p>
       </div>
       <img className="aussiecare-signature-budgies" src="/brand/signature-budgies.webp" alt="Dos periquitos ilustrados, uno azul y uno amarillo con verde" />
-    </section>
+    </div>
   );
 }
