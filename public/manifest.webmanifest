@@ -1,0 +1,30 @@
+{
+  "id": "/",
+  "name": "AussieCare · Periquitos Australianos",
+  "short_name": "AussieCare",
+  "description": "Guía visual cinematográfica y offline para comprender y cuidar periquitos australianos.",
+  "lang": "es-MX",
+  "dir": "ltr",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "categories": ["education", "lifestyle", "reference"],
+  "prefer_related_applications": false,
+  "background_color": "#171915",
+  "theme_color": "#587665",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [
+    { "src": "/screenshots/mobile-australia.png", "sizes": "393x873", "type": "image/png", "form_factor": "narrow", "label": "Prólogo Australia en móvil" },
+    { "src": "/screenshots/desktop-consulta.png", "sizes": "1440x900", "type": "image/png", "form_factor": "wide", "label": "Modo Consulta en escritorio" }
+  ],
+  "shortcuts": [
+    { "name": "Modo Consulta", "short_name": "Consulta", "description": "Abrir la guía local de cuidados.", "url": "/consulta", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Buscar en la guía", "short_name": "Buscar", "url": "/consulta?vista=buscar", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Cuidados de hoy", "short_name": "Hoy", "url": "/consulta?vista=hoy", "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }] }
+  ]
+}

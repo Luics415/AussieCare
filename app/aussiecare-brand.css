@@ -1,0 +1,177 @@
+.aussiecare-explore-chrome {
+  position: fixed;
+  z-index: 120;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: calc(58px + env(safe-area-inset-top));
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: max(12px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right)) 0 max(14px, env(safe-area-inset-left));
+  color: var(--cream);
+  pointer-events: none;
+}
+.aussiecare-explore-chrome button,
+.aussiecare-explore-chrome .compact-sound { pointer-events: auto; }
+.aussiecare-explore-brand {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 44px minmax(0, auto);
+  grid-template-rows: 22px 18px;
+  column-gap: 9px;
+  align-items: center;
+  padding: 0;
+  color: inherit;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  filter: drop-shadow(0 3px 12px #0008);
+}
+.aussiecare-explore-brand > span {
+  grid-row: 1 / 3;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border: 1px solid #f3e9d27a;
+  border-radius: 15px;
+  background: var(--cream);
+  box-shadow: 0 8px 24px #0004;
+}
+.aussiecare-explore-brand img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.aussiecare-explore-brand b { align-self: end; overflow: hidden; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; text-overflow: ellipsis; white-space: nowrap; }
+.aussiecare-explore-brand small { align-self: start; overflow: hidden; color: var(--turquoise); font-size: 7px; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; text-overflow: ellipsis; white-space: nowrap; }
+.aussiecare-explore-actions { display: flex; align-items: center; gap: 8px; }
+.aussiecare-menu-button {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-content: center;
+  gap: 4px;
+  padding: 0;
+  color: inherit;
+  border: 1px solid #f3e9d266;
+  border-radius: 50%;
+  background: #11181199;
+  box-shadow: 0 10px 28px #0003;
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+}
+.aussiecare-menu-button i { width: 15px; height: 1px; display: block; background: currentColor; }
+.aussiecare-explore-chrome[data-light='true'] { color: var(--ink); }
+.aussiecare-explore-chrome[data-light='true'] .aussiecare-menu-button,
+.aussiecare-explore-chrome[data-light='true'] .compact-sound-trigger { color: var(--ink); border-color: #17191542; background: #f3e9d2bd; }
+.aussiecare-explore-chrome[data-light='true'] .aussiecare-explore-brand { filter: none; }
+.aussiecare-menu-layer {
+  position: fixed;
+  z-index: 118;
+  inset: 0;
+  display: flex;
+  justify-content: flex-end;
+  background: #05080599;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .2s ease, visibility .2s;
+}
+.aussiecare-menu-layer[data-open='true'] { opacity: 1; visibility: visible; pointer-events: auto; }
+.aussiecare-menu-panel {
+  width: min(88vw, 390px);
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: max(76px, calc(env(safe-area-inset-top) + 64px)) max(22px, env(safe-area-inset-right)) max(28px, calc(env(safe-area-inset-bottom) + 18px)) 22px;
+  color: var(--cream);
+  background: linear-gradient(155deg, #1b2c22f8, #0a100cfb 68%);
+  box-shadow: -24px 0 70px #0009;
+  transform: translateX(24px);
+  transition: transform .22s ease;
+}
+.aussiecare-menu-layer[data-open='true'] .aussiecare-menu-panel { transform: translateX(0); }
+.aussiecare-menu-panel > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; padding-bottom: 18px; border-bottom: 1px solid #f3e9d22e; }
+.aussiecare-menu-panel > header span,
+.aussiecare-menu-panel > p { display: block; margin: 0; color: var(--turquoise); font-size: 8px; font-weight: 900; letter-spacing: .18em; }
+.aussiecare-menu-panel > header strong { display: block; margin-top: 7px; font: 500 22px/1.05 Georgia, serif; }
+.aussiecare-menu-panel > header button { width: 40px; height: 40px; flex: 0 0 auto; border: 1px solid #f3e9d247; border-radius: 50%; color: inherit; background: transparent; font-size: 25px; cursor: pointer; }
+.aussiecare-mode-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-block: 16px 24px; }
+.aussiecare-mode-links button { min-height: 72px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 12px; color: inherit; border: 1px solid #f3e9d22e; border-radius: 13px; background: #f3e9d20a; cursor: pointer; }
+.aussiecare-mode-links button:first-child { border-color: #36b7b477; background: #36b7b412; }
+.aussiecare-mode-links span { font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+.aussiecare-mode-links small { margin-top: 6px; color: var(--turquoise); font-size: 6.5px; letter-spacing: .12em; }
+.aussiecare-menu-panel ol { margin: 10px 0 0; padding: 0; list-style: none; border-top: 1px solid #f3e9d21f; }
+.aussiecare-menu-panel li button { width: 100%; min-height: 52px; display: grid; grid-template-columns: 34px 1fr 18px; align-items: center; gap: 8px; padding: 5px 3px; color: inherit; border: 0; border-bottom: 1px solid #f3e9d21f; background: transparent; text-align: left; cursor: pointer; }
+.aussiecare-menu-panel li span { color: #f3e9d27b; font: 600 11px/1 Georgia, serif; }
+.aussiecare-menu-panel li strong { font-size: 12px; letter-spacing: .025em; }
+.aussiecare-menu-panel li i { color: var(--turquoise); font-style: normal; text-align: right; }
+.aussiecare-menu-panel li button.is-active { color: var(--yellow); }
+.aussiecare-menu-panel li button.is-active span { color: var(--yellow); }
+.aussiecare-jump-curtain { position: fixed; z-index: 200; inset: 0; background: var(--ink); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .13s ease, visibility .13s; }
+.aussiecare-jump-curtain[data-visible='true'] { opacity: 1; visibility: visible; }
+
+.aussiecare-signature {
+  position: relative;
+  width: min(100%, 820px);
+  aspect-ratio: 1.9;
+  min-height: 190px;
+  overflow: hidden;
+  color: #233d31;
+  border: 1px solid #58766538;
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, transparent 0 12%, #58766512 12.2% 12.45%, transparent 12.7%),
+    repeating-linear-gradient(0deg, transparent 0 38px, #185aa80b 39px 40px),
+    linear-gradient(135deg, #fff8df, #e9f0d9 58%, #d4e3ca);
+  box-shadow: 0 22px 65px #0003;
+}
+.aussiecare-signature::after { content: ''; position: absolute; inset: 7%; border: 1px solid #5876651e; pointer-events: none; }
+.aussiecare-signature-watermark { position: absolute; left: 35%; top: -9%; width: 21%; opacity: .07; mix-blend-mode: multiply; }
+.aussiecare-signature-copy { position: absolute; z-index: 2; left: 7%; top: 30%; width: 59%; }
+.aussiecare-signature-copy > strong { display: block; color: #263d31; font: 800 clamp(48px, 10vw, 102px)/.78 'Brush Script MT','Segoe Script',cursive; letter-spacing: -.08em; transform: rotate(-4deg); transform-origin: left center; }
+.aussiecare-signature-copy p { margin: 22px 0 0 7%; color: #2f493d; font: 500 clamp(10px, 1.7vw, 18px)/1 Georgia, serif; }
+.aussiecare-signature-copy i { color: var(--yellow); font-style: normal; }
+.aussiecare-signature-copy b { color: var(--cobalt); font-weight: 650; }
+.aussiecare-signature-budgies { position: absolute; z-index: 2; right: 3%; bottom: -12%; width: 39%; height: 79%; object-fit: contain; object-position: center bottom; mix-blend-mode: multiply; }
+.aussiecare-signature[data-compact='true'] { min-height: 150px; border-radius: 13px; }
+
+@media (max-width: 520px) {
+  .aussiecare-explore-brand { grid-template-columns: 42px minmax(0, auto); }
+  .aussiecare-explore-brand > span { width: 42px; height: 42px; border-radius: 14px; }
+  .aussiecare-explore-brand small { max-width: 118px; }
+  .aussiecare-explore-actions { gap: 5px; }
+  .aussiecare-signature { aspect-ratio: 1.7; min-height: 205px; }
+  .aussiecare-signature-copy { top: 29%; }
+  .aussiecare-signature-copy > strong { font-size: clamp(45px, 15vw, 72px); }
+  .aussiecare-signature-copy p { width: 125%; margin-top: 17px; font-size: 9px; }
+  .aussiecare-signature-budgies { right: -3%; width: 45%; height: 76%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aussiecare-menu-layer,
+  .aussiecare-menu-panel,
+  .aussiecare-jump-curtain { transition-duration: .001ms !important; }
+}
+
+body.aussiecare-menu-open { overflow: hidden; }
+.explore-consult-fab,
+.phasec-chrome { display: none !important; }
+.flock { align-items: flex-start; gap: clamp(1px, 1.1vw, 12px); }
+.flock > img {
+  width: clamp(23px, 4.2vw, 58px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: saturate(.72) brightness(.62) drop-shadow(0 3px 4px #0005);
+  transform: translateY(0) rotate(-7deg) scale(.72);
+  transform-origin: center;
+}
+.flock > img:nth-child(2), .flock > img:nth-child(6), .flock > img:nth-child(10) { transform: translateY(10px) rotate(-2deg) scale(.9); }
+.flock > img:nth-child(3), .flock > img:nth-child(7) { transform: translateY(-7px) rotate(4deg) scale(.64); }
+.flock > img:nth-child(4), .flock > img:nth-child(8), .flock > img:nth-child(11) { transform: translateY(18px) rotate(8deg) scale(.78); }
+.flock > img:nth-child(5), .flock > img:nth-child(9) { transform: translateY(4px) rotate(-5deg) scale(.58); }
+
+@media (min-width: 900px) {
+  .aussiecare-explore-chrome { left: 50%; right: auto; width: min(100%, 1200px); transform: translateX(-50%); }
+}

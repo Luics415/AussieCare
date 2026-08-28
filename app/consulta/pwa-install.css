@@ -1,0 +1,204 @@
+.consulta-pwa-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 16px 14px;
+  margin: 6px 0 70px;
+  padding: 24px 20px;
+  overflow: hidden;
+  color: var(--cream);
+  background:
+    radial-gradient(circle at 92% 0, rgb(54 183 180 / 22%), transparent 36%),
+    linear-gradient(135deg, #244438, #171915 72%);
+  border: 1px solid rgb(243 233 210 / 18%);
+  box-shadow: 0 26px 70px rgb(23 25 21 / 16%);
+}
+
+.consulta-pwa-card::after {
+  position: absolute;
+  right: -34px;
+  bottom: -56px;
+  width: 160px;
+  height: 160px;
+  border: 1px solid rgb(244 200 74 / 22%);
+  border-radius: 50%;
+  content: '';
+}
+
+.consulta-pwa-mark {
+  position: relative;
+  grid-row: span 2;
+  width: 54px;
+  height: 54px;
+  overflow: hidden;
+  border: 1px solid rgb(243 233 210 / 34%);
+  border-radius: 15px;
+  background: #d8e3b8;
+}
+
+.consulta-pwa-mark img { width: 100%; height: 100%; display: block; object-fit: cover; }
+
+.consulta-pwa-copy {
+  min-width: 0;
+}
+
+.consulta-pwa-copy .consulta-kicker {
+  color: #96d5cd;
+}
+
+.consulta-pwa-copy h2 {
+  margin: 7px 0 8px;
+  font: 700 clamp(34px, 10vw, 58px)/.92 Georgia, serif;
+  letter-spacing: -.055em;
+}
+
+.consulta-pwa-copy > p:last-child {
+  max-width: 520px;
+  margin: 0;
+  color: rgb(243 233 210 / 76%);
+  font: 15px/1.55 Georgia, serif;
+}
+
+.consulta-pwa-status,
+.consulta-pwa-actions,
+.consulta-pwa-progress,
+.consulta-pwa-apple-help,
+.consulta-pwa-card > small {
+  position: relative;
+  z-index: 1;
+  grid-column: 1 / -1;
+}
+
+.consulta-pwa-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  padding-top: 4px;
+  border-top: 1px solid rgb(243 233 210 / 14%);
+}
+
+.consulta-pwa-status span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  color: rgb(243 233 210 / 76%);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+
+.consulta-pwa-status i {
+  width: 8px;
+  height: 8px;
+  background: #f4c84a;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgb(244 200 74 / 12%);
+}
+
+.consulta-pwa-status span[data-state='ready'] i {
+  background: #76b94f;
+  box-shadow: 0 0 0 4px rgb(118 185 79 / 14%);
+}
+
+.consulta-pwa-status span[data-state='error'] i,
+.consulta-pwa-status span[data-state='unavailable'] i {
+  background: #ef7c62;
+  box-shadow: 0 0 0 4px rgb(239 124 98 / 14%);
+}
+
+.consulta-pwa-progress {
+  height: 2px;
+  overflow: hidden;
+  background: rgb(243 233 210 / 14%);
+}
+
+.consulta-pwa-progress i {
+  display: block;
+  height: 100%;
+  background: var(--yellow);
+  transition: width .24s ease;
+}
+
+.consulta-pwa-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.consulta-pwa-actions button,
+.consulta-pwa-installed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  padding: 0 16px;
+  border: 1px solid var(--cream);
+  color: var(--ink);
+  background: var(--cream);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+
+.consulta-pwa-actions .consulta-pwa-secondary {
+  justify-content: center;
+  color: var(--cream);
+  background: transparent;
+  border-color: rgb(243 233 210 / 34%);
+}
+
+.consulta-pwa-installed {
+  justify-content: center;
+  color: #bee2a5;
+  background: rgb(118 185 79 / 12%);
+  border-color: rgb(118 185 79 / 28%);
+}
+
+.consulta-pwa-apple-help {
+  margin: 0;
+  padding: 17px 18px 17px 38px;
+  color: rgb(243 233 210 / 82%);
+  background: rgb(243 233 210 / 7%);
+  font: 13px/1.55 Georgia, serif;
+}
+
+.consulta-pwa-card > small {
+  color: rgb(243 233 210 / 55%);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+@media (min-width: 720px) {
+  .consulta-pwa-card {
+    grid-template-columns: 72px minmax(0, 1fr) minmax(230px, .65fr);
+    align-items: start;
+    gap: 18px 22px;
+    padding: 32px;
+  }
+
+  .consulta-pwa-mark {
+    grid-row: 1 / span 2;
+    width: 68px;
+    height: 68px;
+  }
+
+  .consulta-pwa-actions {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+  }
+
+  .consulta-pwa-status,
+  .consulta-pwa-progress,
+  .consulta-pwa-apple-help,
+  .consulta-pwa-card > small {
+    grid-column: 2 / -1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .consulta-pwa-progress i {
+    transition: none;
+  }
+}
