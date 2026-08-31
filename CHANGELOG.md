@@ -2,6 +2,14 @@
 
 Todos los cambios relevantes de AussieCare se documentarán aquí.
 
+## 1.1.0 — 2026-08-31
+
+- Exportación estática independiente para GitHub Pages bajo `/AussieCare/`.
+- Recursos, navegación y metadatos adaptados a una subruta sin alterar el entorno local.
+- Manifest instalable y Service Worker limitados al scope del proyecto.
+- Workflow automático de publicación con validación previa del artefacto.
+- Validador reproducible para HTML, Consulta, rutas públicas y archivos PWA.
+
 ## 1.0.1 — 2026-08-27
 
 - El protagonista adopta el nombre público Jett en toda la experiencia y documentación.

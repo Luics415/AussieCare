@@ -4,6 +4,7 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 import { domesticSafetyDisclaimer, phaseFBeats } from './content';
 import { useSceneProgress } from './use-scene-progress';
+import { withBasePath } from './base-path';
 
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 const range = (progress: number, start: number, end: number) => clamp((progress - start) / (end - start));
@@ -87,7 +88,7 @@ function HazardVisual({ beatId, progress }: HazardVisualProps) {
     return (
       <div className={`phasef-room-focus is-${spec.tone}`} style={{ '--focus-x': `${spec.x}%`, '--focus-y': `${spec.y}%`, '--resolve': resolved } as CSSProperties} aria-hidden="true">
         <div className="phasef-focus-reticle">
-          {spec.sprite ? <span className="phasef-hazard-icon" style={{ backgroundPosition: `${spec.sprite[0] * 50}% ${spec.sprite[1] * 50}%` }} /> : null}
+          {spec.sprite ? <span className="phasef-hazard-icon" style={{ backgroundImage: `url(${withBasePath('/assets/room-hazards-v2.webp')})`, backgroundPosition: `${spec.sprite[0] * 50}% ${spec.sprite[1] * 50}%` }} /> : null}
           <i /><i /><b />
         </div>
         <div className="phasef-focus-copy"><small>{spec.eyebrow}</small><strong>{spec.state}</strong><span>{spec.detail}</span></div>
@@ -176,7 +177,7 @@ export default function PhaseF({ onProgress, onBeatChange, onSceneState }: Phase
     <section className="phasef-experience" id="phase-f" ref={sectionRef} aria-label="Fase F: Déjame explorar y Mi ambiente">
       <div className="phasef-stage" data-chapter={hazardChapter > environmentChapter ? 'explore' : 'environment'} inert={sceneState !== 'active'} aria-hidden={sceneState !== 'active'}>
         <div className="phasef-room-camera" aria-hidden="true" style={{ '--room-zoom': camera.zoom, '--room-brightness': roomBrightness, '--room-saturation': roomSaturation } as CSSProperties}>
-          <img className="phasef-room" src="/assets/room-base-empty-v3.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ objectPosition: `${camera.x}% ${camera.y}%` }} />
+          <img className="phasef-room" src={withBasePath('/assets/room-base-empty-v3.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ objectPosition: `${camera.x}% ${camera.y}%` }} />
         </div>
         <div className="phasef-base-grade" aria-hidden="true" />
         <div className="phasef-evening-grade" aria-hidden="true" style={{ opacity: evening * (1 - dawnExit) }} />
@@ -184,17 +185,17 @@ export default function PhaseF({ onProgress, onBeatChange, onSceneState }: Phase
         <div className="phasef-dawn-grade" aria-hidden="true" style={{ opacity: dawnExit }} />
         <div className="phasef-sun-beam" aria-hidden="true" style={{ opacity: environmentChapter * (1 - range(progress, .82, .88)) }} />
 
-        <img className="phasef-flight-bud" src="/assets/bud-hero-flight-v2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: Math.max(flightEntry, safeFlight), transform: `translate3d(${safeFlight * 24 + flightEntry * 8}%, ${safeFlight * 7 - flightEntry * 3}%, 0) scale(${.56 + flightEntry * .34 - safeFlight * .12}) rotate(${flightEntry * -3 + safeFlight * 7}deg)` }} />
-        <img className="phasef-safe-perch" src="/assets/natural-perch-v1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: safePerch }} />
-        <img className="phasef-landing-bud" src="/assets/bud-hero-curious-v1.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: perchedArrival, transform: `translateY(${(1 - perchedArrival) * -16}px) scale(${.92 + perchedArrival * .08})` }} />
+        <img className="phasef-flight-bud" src={withBasePath('/assets/bud-hero-flight-v2.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: Math.max(flightEntry, safeFlight), transform: `translate3d(${safeFlight * 24 + flightEntry * 8}%, ${safeFlight * 7 - flightEntry * 3}%, 0) scale(${.56 + flightEntry * .34 - safeFlight * .12}) rotate(${flightEntry * -3 + safeFlight * 7}deg)` }} />
+        <img className="phasef-safe-perch" src={withBasePath('/assets/natural-perch-v1.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: safePerch }} />
+        <img className="phasef-landing-bud" src={withBasePath('/assets/bud-hero-curious-v1.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: perchedArrival, transform: `translateY(${(1 - perchedArrival) * -16}px) scale(${.92 + perchedArrival * .08})` }} />
 
         <div className="phasef-hazard-layer" aria-hidden="true" style={{ opacity: hazardChapter }}>
           <HazardVisual beatId={beat.id} progress={progress} />
         </div>
 
         <div className="phasef-environment-layer" aria-hidden="true" style={{ opacity: environmentChapter }}>
-          <img className="phasef-awake-bud" src="/assets/bud-hero-perched-v3.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: awakeBird, transform: `translateY(${(1 - awakeBird) * 3}%) scale(${.91 + dawnExit * .025})` }} />
-          <img className="phasef-sleep-bud" src="/assets/bud-hero-fluffed-scene-v2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: sleepBird, transform: `translateY(${(1 - sleepBird) * 2}%) scale(${.93 + sleepBird * .015})` }} />
+          <img className="phasef-awake-bud" src={withBasePath('/assets/bud-hero-perched-v3.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: awakeBird, transform: `translateY(${(1 - awakeBird) * 3}%) scale(${.91 + dawnExit * .025})` }} />
+          <img className="phasef-sleep-bud" src={withBasePath('/assets/bud-hero-fluffed-scene-v2.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: sleepBird, transform: `translateY(${(1 - sleepBird) * 2}%) scale(${.93 + sleepBird * .015})` }} />
           <EnvironmentVisual beatId={beat.id} progress={progress} />
         </div>
 

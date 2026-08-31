@@ -3,6 +3,7 @@
 
 import CompactSoundControl from './compact-sound-control';
 import { exploreChapters, type ExploreChapter } from './experience-map';
+import { withBasePath } from './base-path';
 
 type PersistentExploreChromeProps = {
   activeChapter: number;
@@ -37,7 +38,7 @@ export default function PersistentExploreChrome({
     <>
       <header className="aussiecare-explore-chrome" data-light={activeChapter === 1 ? 'true' : 'false'}>
         <button className="aussiecare-explore-brand" type="button" onClick={onHome} aria-label="Volver a Australia, inicio de Explorar">
-          <span><img src="/brand/aussiecare-icon.webp" alt="" aria-hidden="true" /></span>
+          <span><img src={withBasePath('/brand/aussiecare-icon.webp')} alt="" aria-hidden="true" /></span>
           <b>AussieCare</b>
           <small>{current ? `${String(current.number).padStart(2, '0')} · ${current.title}` : 'ORIGEN · AUSTRALIA'}</small>
         </button>

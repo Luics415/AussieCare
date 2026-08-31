@@ -11,11 +11,17 @@ import './phase-g.css';
 import './reading-accessibility.css';
 import './aussiecare-brand.css';
 import ServiceWorkerRegistration from './service-worker-registration';
+import { withBasePath } from './base-path';
+
+const configuredSiteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN?.trim();
 
 export const metadata: Metadata = {
+  metadataBase: configuredSiteOrigin
+    ? new URL(configuredSiteOrigin.endsWith('/') ? configuredSiteOrigin : `${configuredSiteOrigin}/`)
+    : undefined,
   title: 'AussieCare · Periquitos Australianos',
   description: 'Una guía visual cinematográfica y offline para comprender y cuidar periquitos australianos.',
-  manifest: '/manifest.webmanifest',
+  manifest: withBasePath('/manifest.webmanifest'),
   applicationName: 'AussieCare',
   appleWebApp: {
     capable: true,
@@ -24,22 +30,22 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/icons/favicon-64.png', sizes: '64x64', type: 'image/png' },
+      { url: withBasePath('/icons/favicon-64.png'), sizes: '64x64', type: 'image/png' },
     ],
-    apple: [{ url: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    apple: [{ url: withBasePath('/icons/apple-touch-icon.png'), sizes: '180x180', type: 'image/png' }],
   },
   openGraph: {
     type: 'website',
     locale: 'es_MX',
     title: 'AussieCare · Periquitos Australianos',
     description: 'Guía visual para comprender y cuidar a tu periquito.',
-    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Jett en un paisaje australiano al amanecer' }],
+    images: [{ url: withBasePath('/og.png'), width: 1200, height: 630, alt: 'Jett en un paisaje australiano al amanecer' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AussieCare · Periquitos Australianos',
     description: 'Guía visual para comprender y cuidar a tu periquito.',
-    images: ['/og.png'],
+    images: [withBasePath('/og.png')],
   },
 };
 

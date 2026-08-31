@@ -1,12 +1,17 @@
-const VERSION = 'aussiecare-final-v3';
+const VERSION = 'aussiecare-pages-v4';
 const PREFIX = 'aussiecare-';
 const LEGACY_PREFIXES = ['undulatus-'];
+const BASE_PATH = new URL(self.registration.scope).pathname.replace(/\/$/, '');
+const scoped = (path = '/') => {
+  const normalized = path.startsWith('/') ? path : `/${path}`;
+  return `${BASE_PATH}${normalized}` || '/';
+};
 const CORE_CACHE = `${PREFIX}core-${VERSION}`;
 const RUNTIME_CACHE = `${PREFIX}runtime-${VERSION}`;
 const CINEMATIC_CACHE = `${PREFIX}cinematic-${VERSION}`;
 const OWN_CACHES = new Set([CORE_CACHE, RUNTIME_CACHE, CINEMATIC_CACHE]);
 
-const CORE_ROUTES = ['/', '/consulta'];
+const CORE_ROUTES = [scoped('/'), scoped('/consulta/')];
 const CORE_ASSETS = [
   '/manifest.webmanifest',
   '/icons/favicon-64.png',
@@ -19,7 +24,7 @@ const CORE_ASSETS = [
   '/brand/aussiecare-icon.webp',
   '/brand/luics415-signature.webp',
   '/brand/signature-budgies.webp',
-];
+].map(scoped);
 const CINEMATIC_ASSETS = [
   '/assets/australia-master.webp',
   '/assets/bud-hero-style-lock.webp',
@@ -47,12 +52,12 @@ const CINEMATIC_ASSETS = [
   '/assets/avian-vet-clinic-v2.webp',
   '/assets/bud-hero-return-australia-v2.webp',
   '/audio/budgerigar-chirping-public-domain.ogg',
-];
+].map(scoped);
 
 function sameOriginAsset(value) {
   try {
     const url = new URL(value, self.location.origin);
-    if (url.origin !== self.location.origin || !url.pathname.startsWith('/_next/static/')) return null;
+    if (url.origin !== self.location.origin || !url.pathname.startsWith(scoped('/_next/static/'))) return null;
     return url.href;
   } catch {
     return null;
@@ -86,7 +91,7 @@ async function cacheCoreShell() {
 
 async function coreStatus() {
   const cache = await caches.open(CORE_CACHE);
-  const [home, consulta] = await Promise.all([cache.match('/'), cache.match('/consulta')]);
+  const [home, consulta] = await Promise.all(CORE_ROUTES.map((route) => cache.match(route)));
   return Boolean(home && consulta);
 }
 
@@ -115,7 +120,7 @@ self.addEventListener('activate', (event) => {
 
 async function navigationResponse(request) {
   const url = new URL(request.url);
-  const fallback = url.pathname.startsWith('/consulta') ? '/consulta' : '/';
+  const fallback = url.pathname.startsWith(scoped('/consulta')) ? scoped('/consulta/') : scoped('/');
   try {
     const response = await fetch(request);
     if (response.ok) {
@@ -158,8 +163,8 @@ self.addEventListener('fetch', (event) => {
   }
 
   const canCache = ['script', 'style', 'font', 'image', 'audio', 'worker'].includes(request.destination)
-    || url.pathname.startsWith('/_next/static/')
-    || url.pathname.startsWith('/audio/');
+    || url.pathname.startsWith(scoped('/_next/static/'))
+    || url.pathname.startsWith(scoped('/audio/'));
   if (!canCache) return;
 
   event.respondWith((async () => {

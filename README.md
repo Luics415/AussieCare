@@ -8,6 +8,7 @@
 
 <p align="center">
   <a href="https://github.com/Luics415/AussieCare/actions/workflows/ci.yml"><img src="https://github.com/Luics415/AussieCare/actions/workflows/ci.yml/badge.svg" alt="Estado de integración continua"></a>
+  <a href="https://github.com/Luics415/AussieCare/actions/workflows/deploy-pages.yml"><img src="https://github.com/Luics415/AussieCare/actions/workflows/deploy-pages.yml/badge.svg" alt="Estado del despliegue a GitHub Pages"></a>
   <img src="https://img.shields.io/badge/PWA-offline-587665" alt="PWA offline">
   <img src="https://img.shields.io/badge/consulta-53%20fichas-185AA8" alt="53 fichas de consulta">
   <img src="https://img.shields.io/badge/sin-login-F4C84A" alt="Sin cuentas ni login">
@@ -21,6 +22,8 @@ AussieCare reúne dos experiencias que comparten una sola base de conocimiento:
 - **Consulta**: una guía local para principiantes con búsqueda, fichas enlazadas, fuentes veterinarias y listas de cuidado guardadas únicamente en el dispositivo.
 
 No utiliza cuentas, correo, inicio de sesión, base de datos ni un backend innecesario. La PWA prepara el núcleo de Consulta para trabajar sin conexión y permite guardar opcionalmente la película completa.
+
+**Aplicación pública:** [luics415.github.io/AussieCare](https://luics415.github.io/AussieCare/)
 
 > [!IMPORTANT]
 > AussieCare es material educativo. No diagnostica ni sustituye a un veterinario con experiencia en aves. Dificultad respiratoria, sangrado, convulsión, traumatismo, debilidad extrema o incapacidad para posarse requieren atención profesional inmediata.
@@ -92,7 +95,7 @@ La película y Consulta no duplican conocimiento. `app/content.ts` define los be
 
 - Next.js 16 App Router
 - React 19 + TypeScript estricto
-- Vinext/Vite para el build Worker/RSC
+- Vinext/Vite para el entorno Worker/RSC y Next.js Static Export para GitHub Pages
 - CSS nativo para puesta en escena y movimiento ligado al scroll
 - Web Audio API para el paisaje sonoro dinámico
 - Sharp para el pipeline de medios
@@ -122,7 +125,10 @@ Abre `http://localhost:3000/` para Explorar y `http://localhost:3000/consulta` p
 | `npm run typecheck` | Verificación TypeScript sin emitir archivos. |
 | `npm run lint` | Reglas de Next.js, React y TypeScript. |
 | `npm run build` | Build de producción Vinext/Worker. |
+| `npm run build:pages` | Exportación estática de Next.js para GitHub Pages. |
+| `npm run validate:pages` | Comprueba rutas, manifiesto, Worker y artefactos del sitio estático. |
 | `npm run check` | Lint, tipos y build en una sola ejecución. |
+| `npm run check:pages` | Lint, tipos, exportación y validación de GitHub Pages. |
 | `npm run assets` | Reconstruye WebP, marca, iconos y Open Graph desde `art/`. |
 
 ## Modelo de contenido
@@ -155,13 +161,20 @@ Esto evita recorrer y disparar artificialmente todos los capítulos intermedios.
 
 ## PWA y datos locales
 
-- El shell de `/` y `/consulta` se prepara automáticamente.
+- El shell de Explorar y Consulta se prepara automáticamente dentro del scope donde esté alojada la aplicación.
 - La película completa se descarga sólo cuando el usuario lo solicita.
 - Las listas y el punto de regreso viven en `localStorage`/`sessionStorage`.
 - No se transmiten datos personales y no existe telemetría propia.
 - Una actualización nueva queda en espera y la interfaz permite aplicarla de forma explícita.
 
-El build actual es Worker/RSC. El repositorio puede alojarse en GitHub, pero **GitHub Pages no ejecuta esta salida** sin una migración explícita a exportación estática. Para producción debe usarse un host compatible con Workers/Vinext o adaptarse el proyecto conscientemente.
+### Publicación en GitHub Pages
+
+El proyecto mantiene dos salidas deliberadamente separadas:
+
+- `npm run build` conserva el entorno Vinext/Worker utilizado durante el desarrollo original.
+- `npm run build:pages` genera HTML, CSS y JavaScript estáticos en `out/`, con `basePath` `/AussieCare`.
+
+El workflow [`deploy-pages.yml`](.github/workflows/deploy-pages.yml) ejecuta lint, TypeScript, exportación y el validador propio antes de entregar el artefacto a GitHub Pages. Las imágenes, audio, navegación, manifiesto y Service Worker respetan la subruta `/AussieCare/`; el modo offline queda limitado a ese scope y no invade otros proyectos de `luics415.github.io`.
 
 ## Arte y audio
 
@@ -184,7 +197,7 @@ La entrega se valida con:
 - casos de búsqueda como `ajo`, `mi periquito no come` y `manzana`;
 - revisión de consola y manifiesto PWA.
 
-GitHub Actions repite lint, tipos y build en cada push y pull request.
+GitHub Actions repite lint, tipos y build en cada push y pull request. Un segundo flujo publica `main` en GitHub Pages únicamente después de validar la exportación estática.
 
 ## Contribuir
 

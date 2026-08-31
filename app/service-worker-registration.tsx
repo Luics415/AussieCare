@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { withBasePath } from './base-path';
 
 export default function ServiceWorkerRegistration() {
   const [updateReady, setUpdateReady] = useState(false);
@@ -28,7 +29,7 @@ export default function ServiceWorkerRegistration() {
     navigator.serviceWorker.addEventListener('message', onMessage);
     navigator.serviceWorker.addEventListener('controllerchange', onControllerChange);
 
-    navigator.serviceWorker.register('/sw.js').then(async (registration) => {
+    navigator.serviceWorker.register(withBasePath('/sw.js'), { scope: withBasePath('/'), updateViaCache: 'none' }).then(async (registration) => {
       registrationRef.current = registration;
       if (registration.waiting) setUpdateReady(true);
       registration.addEventListener('updatefound', () => {

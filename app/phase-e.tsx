@@ -4,6 +4,7 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 import { healthDisclaimer, phaseEBeats } from './content';
 import { useSceneProgress } from './use-scene-progress';
+import { withBasePath } from './base-path';
 
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 const range = (progress: number, start: number, end: number) => clamp((progress - start) / (end - start));
@@ -64,12 +65,12 @@ export default function PhaseE({ onProgress, onBeatChange, onSceneState }: Phase
     <section className="phasee-experience" id="phase-e" ref={sectionRef} aria-label="Fase E: ¿Estoy bien? y Confía en mí">
       <div className="phasee-stage" inert={sceneState !== 'active'} aria-hidden={sceneState !== 'active'}>
         <div className="phasee-health-scene" aria-hidden="true" style={{ opacity: healthScene }}>
-          <img className="phasee-room" src="/assets/room-base-empty-v3.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+          <img className="phasee-room" src={withBasePath('/assets/room-base-empty-v3.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
           <div className="phasee-health-grade" />
 
           <img
             className="phasee-health-bud phasee-health-bud-normal"
-            src="/assets/bud-hero-perched-v3.webp"
+            src={withBasePath('/assets/bud-hero-perched-v3.webp')}
             alt=""
             aria-hidden="true"
             loading="lazy"
@@ -78,7 +79,7 @@ export default function PhaseE({ onProgress, onBeatChange, onSceneState }: Phase
           />
           <img
             className="phasee-health-bud phasee-health-bud-fluffed"
-            src="/assets/bud-hero-fluffed-scene-v2.webp"
+            src={withBasePath('/assets/bud-hero-fluffed-scene-v2.webp')}
             alt=""
             aria-hidden="true"
             loading="lazy"
@@ -114,29 +115,29 @@ export default function PhaseE({ onProgress, onBeatChange, onSceneState }: Phase
           </div>
 
           <div className="health-emergency" aria-hidden="true" style={{ opacity: emergency }}>
-            <img className="health-emergency-bud" src="/assets/bud-hero-urgent-v1.webp" alt="" loading="lazy" decoding="async" style={{ transform: `translateY(${(1 - emergency) * -9}px) rotate(${range(progress, .49, .525) * 4}deg)` }} /><b>URGENTE</b><span>NO PUEDE POSARSE</span>
+            <img className="health-emergency-bud" src={withBasePath('/assets/bud-hero-urgent-v1.webp')} alt="" loading="lazy" decoding="async" style={{ transform: `translateY(${(1 - emergency) * -9}px) rotate(${range(progress, .49, .525) * 4}deg)` }} /><b>URGENTE</b><span>NO PUEDE POSARSE</span>
           </div>
 
           <div className="health-vet-card" aria-hidden="true" style={{ opacity: vetRing, transform: `translate(-50%, -50%) scale(${.88 + range(progress, .515, .61) * .12})` }}>
-            <img src="/assets/avian-vet-clinic-v2.webp" alt="" loading="lazy" decoding="async" />
+            <img src={withBasePath('/assets/avian-vet-clinic-v2.webp')} alt="" loading="lazy" decoding="async" />
             <div><small>VETERINARIO AVIAR</small><b>Describe el cambio</b><span>Qué cambió · desde cuándo · cuánto come · cómo respira</span></div>
           </div>
         </div>
 
         <div className="phasee-trust-scene" aria-hidden="true" style={{ opacity: trustScene }}>
-          <img className="phasee-trust-room" src="/assets/room-base-empty-v3.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" />
-          <img className="phasee-trust-perch" src="/assets/natural-perch-v1.webp" alt="" loading="lazy" decoding="async" style={{ opacity: approachScene }} />
-          <img className="phasee-trust-bud" src="/assets/bud-hero-curious-v1.webp" alt="" loading="lazy" decoding="async" style={{ opacity: approachScene, transform: `translate3d(${birdRetreat * 18 - positiveApproach * 24}%, 0, 0)` }} />
-          <img className="phasee-trust-hand" src="/assets/trust-hand-v1.webp" alt="" loading="lazy" decoding="async" style={{ opacity: approachScene, transform: `translate3d(${handApproach * 19}%, 0, 0)` }} />
+          <img className="phasee-trust-room" src={withBasePath('/assets/room-base-empty-v3.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+          <img className="phasee-trust-perch" src={withBasePath('/assets/natural-perch-v1.webp')} alt="" loading="lazy" decoding="async" style={{ opacity: approachScene }} />
+          <img className="phasee-trust-bud" src={withBasePath('/assets/bud-hero-curious-v1.webp')} alt="" loading="lazy" decoding="async" style={{ opacity: approachScene, transform: `translate3d(${birdRetreat * 18 - positiveApproach * 24}%, 0, 0)` }} />
+          <img className="phasee-trust-hand" src={withBasePath('/assets/trust-hand-v1.webp')} alt="" loading="lazy" decoding="async" style={{ opacity: approachScene, transform: `translate3d(${handApproach * 19}%, 0, 0)` }} />
           <div className="phasee-trust-grade" />
 
           <div className="trust-distance" aria-hidden="true" style={{ opacity: windowed(progress, .59, .715) }}><i /><span>DISTANCIA CÓMODA</span></div>
-          <img className="trust-reward-real" src="/assets/millet-reward-v1.webp" alt="" loading="lazy" decoding="async" style={{ opacity: reward, transform: `translateY(${(1 - reward) * -14}px) scale(${.82 + reward * .18})` }} />
+          <img className="trust-reward-real" src={withBasePath('/assets/millet-reward-v1.webp')} alt="" loading="lazy" decoding="async" style={{ opacity: reward, transform: `translateY(${(1 - reward) * -14}px) scale(${.82 + reward * .18})` }} />
           <div className="trust-invitation" aria-hidden="true" style={{ opacity: target }}><i /><b>INVITACIÓN</b><span>ELIGE ACERCARSE</span></div>
 
           <img
             className="phasee-step-up"
-            src="/assets/bud-hero-step-up-scene-v2.webp"
+            src={withBasePath('/assets/bud-hero-step-up-scene-v2.webp')}
             alt=""
             aria-hidden="true"
             loading="lazy"
@@ -147,7 +148,7 @@ export default function PhaseE({ onProgress, onBeatChange, onSceneState }: Phase
 
           <img
             className="phasee-flight"
-            src="/assets/bud-hero-flight-v2.webp"
+            src={withBasePath('/assets/bud-hero-flight-v2.webp')}
             alt=""
             aria-hidden="true"
             loading="lazy"

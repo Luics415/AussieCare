@@ -1,5 +1,4 @@
 'use client';
-/* eslint-disable @next/next/no-html-link-for-pages -- Full document hops avoid a known Vinext RSC prefetch runtime error. */
 /* eslint-disable @next/next/no-img-element -- Transparent character and brand assets are pre-optimized and composition-sized. */
 
 import {
@@ -15,6 +14,7 @@ import {
 import { careSources } from '../content';
 import PwaInstallCard from '../pwa-install-card';
 import AussieCareSignature from '../aussiecare-signature';
+import { withBasePath } from '../base-path';
 import {
   getGuideEntry,
   guideCategories,
@@ -290,7 +290,7 @@ function routeUrl(route: RouteState) {
   if (route.entryId) params.set('ficha', route.entryId);
   if (route.query) params.set('q', route.query);
   const query = params.toString();
-  return `/consulta${query ? `?${query}` : ''}`;
+  return `${withBasePath('/consulta/')}${query ? `?${query}` : ''}`;
 }
 
 function entriesForCategory(category: UiCategory) {
@@ -340,7 +340,7 @@ function SearchGlyph() {
 }
 
 function BrandMark() {
-  return <span className="consulta-brand-mark" aria-hidden="true"><img src="/brand/aussiecare-icon.webp" alt="" /></span>;
+  return <span className="consulta-brand-mark" aria-hidden="true"><img src={withBasePath('/brand/aussiecare-icon.webp')} alt="" /></span>;
 }
 
 type Navigate = (patch: Partial<RouteState>, options?: { replace?: boolean; keepScroll?: boolean }) => void;
@@ -400,7 +400,7 @@ function HomeView({ navigate, checklist }: { navigate: Navigate; checklist: Chec
         <div className="consulta-hero-bird" aria-hidden="true">
           <span>GUÍA DE CAMPO</span>
           {/* This transparent character cutout must keep its original aspect and alpha. */}
-          <img src="/assets/bud-hero-curious-v1.webp" alt="" decoding="async" />
+          <img src={withBasePath('/assets/bud-hero-curious-v1.webp')} alt="" decoding="async" />
           <i>Melopsittacus undulatus</i>
         </div>
       </section>
@@ -455,7 +455,7 @@ function HomeView({ navigate, checklist }: { navigate: Navigate; checklist: Chec
         <p className="consulta-kicker">DOS MODOS · UNA MISMA HISTORIA</p>
         <h2>¿Prefieres descubrirlo<br />en movimiento?</h2>
         <p>Vuelve a la película y deja que Jett te guíe capítulo por capítulo.</p>
-        <a href="/?retorno=1">VER MODO EXPLORAR <span aria-hidden="true">↗</span></a>
+        <a href={withBasePath('/?retorno=1')}>VER MODO EXPLORAR <span aria-hidden="true">↗</span></a>
       </section>
     </div>
   );
@@ -557,7 +557,7 @@ function EntryDetail({ entry, categoryId, navigate }: { entry: GuideEntry; categ
   const related = entry.relatedIds.map(getEntry).filter((candidate): candidate is GuideEntry => Boolean(candidate));
   const section = entrySection(entry);
   const exploreHref = entry.explore
-    ? `/?fase=${encodeURIComponent(entry.explore.phase)}&beat=${encodeURIComponent(entry.explore.beatId)}`
+    ? withBasePath(`/?fase=${encodeURIComponent(entry.explore.phase)}&beat=${encodeURIComponent(entry.explore.beatId)}`)
     : '';
 
   return (
@@ -762,7 +762,7 @@ export default function ConsultationApp() {
           <BrandMark />
           <span><strong>AussieCare</strong><small>MODO CONSULTA</small></span>
         </button>
-        <a className="consulta-film-return" href="/?retorno=1" aria-label={filmLabel}>
+        <a className="consulta-film-return" href={withBasePath('/?retorno=1')} aria-label={filmLabel}>
           <span className="consulta-film-label"><span className="consulta-film-label-long">{filmLabel}</span><span className="consulta-film-label-short" aria-hidden="true">PELÍCULA</span></span>
           <i aria-hidden="true">↗</i>
         </a>
@@ -782,7 +782,7 @@ export default function ConsultationApp() {
       <footer className="consulta-footer">
         <BrandMark />
         <p>Una guía educativa para observar mejor. No sustituye la valoración de un veterinario con experiencia en aves.</p>
-        <a href="/?retorno=1">MODO EXPLORAR <span aria-hidden="true">↗</span></a>
+        <a href={withBasePath('/?retorno=1')}>MODO EXPLORAR <span aria-hidden="true">↗</span></a>
       </footer>
     </div>
   );

@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- The PWA badge is pre-optimized and rendered at a fixed size. */
 
 import { useEffect, useState } from 'react';
+import { withBasePath } from './base-path';
 
 type InstallPromptEvent = Event & {
   prompt: () => Promise<void>;
@@ -122,7 +123,7 @@ export default function PwaInstallCard() {
 
   return (
     <section className="consulta-pwa-card" aria-labelledby="consulta-pwa-title">
-      <div className="consulta-pwa-mark" aria-hidden="true"><img src="/brand/aussiecare-icon.webp" alt="" /></div>
+      <div className="consulta-pwa-mark" aria-hidden="true"><img src={withBasePath('/brand/aussiecare-icon.webp')} alt="" /></div>
       <div className="consulta-pwa-copy">
         <p className="consulta-kicker">TU GUÍA · EN ESTE DISPOSITIVO</p>
         <h2 id="consulta-pwa-title">Llévala contigo.</h2>

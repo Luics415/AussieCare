@@ -298,7 +298,6 @@
   z-index: 1;
   inset: 9%;
   border-radius: 50%;
-  background-image: url('/assets/room-hazards-v2.webp');
   background-repeat: no-repeat;
   background-size: 300% 300%;
   filter: saturate(.9) contrast(1.04);

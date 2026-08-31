@@ -5,6 +5,7 @@ import { useEffect, useRef, type CSSProperties } from 'react';
 import { behaviorSafetyDisclaimer, phaseGBeats } from './content';
 import { useSceneProgress, type SceneState } from './use-scene-progress';
 import AussieCareSignature from './aussiecare-signature';
+import { withBasePath } from './base-path';
 
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 const range = (progress: number, start: number, end: number) => clamp((progress - start) / (end - start));
@@ -76,10 +77,10 @@ const POSE_LABEL: Record<BehaviorPose, string> = {
 };
 
 const POSE_ASSET: Record<BehaviorPose, string> = {
-  singing: '/assets/bud-hero-singing-v1.webp',
-  preening: '/assets/bud-hero-preening-v1.webp',
-  foraging: '/assets/bud-hero-foraging-v1.webp',
-  curious: '/assets/bud-hero-curious-v1.webp',
+  singing: withBasePath('/assets/bud-hero-singing-v1.webp'),
+  preening: withBasePath('/assets/bud-hero-preening-v1.webp'),
+  foraging: withBasePath('/assets/bud-hero-foraging-v1.webp'),
+  curious: withBasePath('/assets/bud-hero-curious-v1.webp'),
 };
 
 function BehaviorSprite({ pose, style }: { pose: BehaviorPose; style?: CSSProperties }) {
@@ -134,16 +135,16 @@ export default function PhaseG({ onProgress, onBeatChange, onSceneState, onResta
     <section className="phaseg-experience" id="phase-g" ref={sectionRef} aria-label="Fase G: Aprende mi lenguaje y cierre">
       <div className="phaseg-stage" data-category={category} data-expanded={beat.id === 'attention' ? 'true' : 'false'} inert={sceneState !== 'active'} aria-hidden={sceneState !== 'active'}>
         <div className="phaseg-room-layer" style={{ opacity: 1 - roomExit }} aria-hidden="true">
-          <img src="/assets/room-base-empty-v3.webp" alt="" loading="lazy" decoding="async" />
+          <img src={withBasePath('/assets/room-base-empty-v3.webp')} alt="" loading="lazy" decoding="async" />
           <i />
         </div>
         <div className="phaseg-ink" style={{ opacity: roomExit * (1 - australiaIn) }} aria-hidden="true" />
         <div className="phaseg-australia" style={{ opacity: australiaIn }} aria-hidden="true">
-          <img src="/assets/australia-master.webp" alt="" loading="lazy" decoding="async" style={{ transform: `scale(${1.12 - australiaIn * .06}) translateY(${(1 - australiaIn) * 2}%)` }} />
+          <img src={withBasePath('/assets/australia-master.webp')} alt="" loading="lazy" decoding="async" style={{ transform: `scale(${1.12 - australiaIn * .06}) translateY(${(1 - australiaIn) * 2}%)` }} />
           <i />
         </div>
         <div className="phaseg-return-scene" style={{ opacity: returnIn }} aria-hidden="true">
-          <img src="/assets/bud-hero-return-australia-v2.webp" alt="" loading="lazy" decoding="async" style={{ transform: `scale(${1.08 - returnIn * .08})` }} />
+          <img src={withBasePath('/assets/bud-hero-return-australia-v2.webp')} alt="" loading="lazy" decoding="async" style={{ transform: `scale(${1.08 - returnIn * .08})` }} />
           <i />
         </div>
 
@@ -159,15 +160,15 @@ export default function PhaseG({ onProgress, onBeatChange, onSceneState, onResta
 
         <div className="phaseg-bird-field" aria-hidden="true" style={{ opacity: behaviorIn, transform: `translate3d(0, ${(1 - behaviorIn) * 2.5}%, 0) scale(${1 - flockMorph * .16})` }}>
           {pose ? <BehaviorSprite pose={pose} /> : null}
-          {useFluffed ? <img className="phaseg-fluffed-bud" src="/assets/bud-hero-fluffed-scene-v2.webp" alt="Jett con el plumaje esponjado" loading="lazy" decoding="async" /> : null}
-          {usePerched ? <img className="phaseg-perched-bud" src="/assets/bud-hero-perched-v3.webp" alt="Jett posado mientras se observa su lenguaje corporal" loading="lazy" decoding="async" /> : null}
+          {useFluffed ? <img className="phaseg-fluffed-bud" src={withBasePath('/assets/bud-hero-fluffed-scene-v2.webp')} alt="Jett con el plumaje esponjado" loading="lazy" decoding="async" /> : null}
+          {usePerched ? <img className="phaseg-perched-bud" src={withBasePath('/assets/bud-hero-perched-v3.webp')} alt="Jett posado mientras se observa su lenguaje corporal" loading="lazy" decoding="async" /> : null}
           <div className="phaseg-feathers" data-visible={isMolt ? 'true' : 'false'} aria-hidden="true">{Array.from({ length: 5 }, (_, index) => <i key={index} style={{ '--feather': index } as CSSProperties} />)}</div>
         </div>
 
         <div className="phaseg-flock-morph" style={{ opacity: flockMorph * (1 - finaleIn) }} aria-hidden="true">
           {Array.from({ length: 13 }, (_, index) => <i key={index} style={{ '--bird': index, '--flight': flockMorph } as CSSProperties} />)}
         </div>
-        <img className="phaseg-flight-bud" src="/assets/bud-hero-flight-v2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: range(progress, .805, .83) * (1 - range(progress, .855, .875)), transform: `translate3d(${(flockMorph - .5) * 74}vw, ${12 - flockMorph * 17}svh, 0) scale(${.68 - flockMorph * .2}) rotate(${5 - flockMorph * 14}deg)` }} />
+        <img className="phaseg-flight-bud" src={withBasePath('/assets/bud-hero-flight-v2.webp')} alt="" aria-hidden="true" loading="lazy" decoding="async" style={{ opacity: range(progress, .805, .83) * (1 - range(progress, .855, .875)), transform: `translate3d(${(flockMorph - .5) * 74}vw, ${12 - flockMorph * 17}svh, 0) scale(${.68 - flockMorph * .2}) rotate(${5 - flockMorph * 14}deg)` }} />
 
         <div className="phaseg-categories" aria-label={`Categoría actual: ${category === 'neutral' ? 'contexto' : category}`}>
           <span data-level="normal" className={category === 'normal' ? 'active' : ''}>NORMAL</span>

@@ -58,7 +58,7 @@
 }
 .trait { bottom: 4%; font-size: clamp(34px, 10vw, 76px); }
 .hero-flight { left: 50%; top: 5%; width: min(78vw, 650px); aspect-ratio: 2/3; }
-.bird-crop { background: url('/assets/bud-hero-flight-v2.webp') center / contain no-repeat; }
+.bird-crop { background-position: center; background-size: contain; background-repeat: no-repeat; }
 @media (max-width: 420px) {
   .beat-card { width: min(68vw, 255px); }
   .beat-card strong { font-size: 15px; }

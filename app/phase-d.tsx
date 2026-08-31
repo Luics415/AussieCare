@@ -4,6 +4,7 @@
 import { useEffect, useRef, type CSSProperties } from 'react';
 import { nutritionDisclaimer, phaseDBeats } from './content';
 import { useSceneProgress } from './use-scene-progress';
+import { withBasePath } from './base-path';
 
 const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value));
 const range = (progress: number, start: number, end: number) => clamp((progress - start) / (end - start));
@@ -67,7 +68,7 @@ export default function PhaseD({ onProgress, onBeatChange }: PhaseDProps) {
       <div className="phased-stage" inert={sceneState !== 'active'} aria-hidden={sceneState !== 'active'}>
         <div className="phased-food-scene" aria-hidden="true" style={{ opacity: foodScene }}>
           <div className="phased-food-visual">
-            <img className="phased-food-table" src="/assets/food-table-v2.webp" alt="Mesa con alimentos reales aptos y alimentos peligrosos separados" loading="lazy" decoding="async" style={{ transform: `scale(${1.005 + progress * .012})` }} />
+            <img className="phased-food-table" src={withBasePath('/assets/food-table-v2.webp')} alt="Mesa con alimentos reales aptos y alimentos peligrosos separados" loading="lazy" decoding="async" style={{ transform: `scale(${1.005 + progress * .012})` }} />
             {foodFocus ? <div className="phased-food-focus" data-warning={foodFocus.warning ? 'true' : 'false'} style={{ left: `${foodFocus.x}%`, top: `${foodFocus.y}%`, width: `${foodFocus.size ?? 132}px` }}><i /><span>{foodFocus.warning ? 'NO OFRECER' : 'PORCIÓN REAL'}</span></div> : null}
           </div>
           <div className="food-table" aria-hidden="true" />
@@ -114,16 +115,16 @@ export default function PhaseD({ onProgress, onBeatChange }: PhaseDProps) {
         </div>
 
         <div className="phased-clean-scene" aria-hidden="true" style={{ opacity: cleanScene }}>
-          <img className="phased-clean-room" src="/assets/room-base-empty-v3.webp" alt="" loading="lazy" decoding="async" style={{ opacity: .74 + observe * .16, transform: `scale(${1.04 - observe * .015})`, filter: `saturate(${.62 + surfaces * .34}) brightness(${.68 + surfaces * .22})` }} />
+          <img className="phased-clean-room" src={withBasePath('/assets/room-base-empty-v3.webp')} alt="" loading="lazy" decoding="async" style={{ opacity: .74 + observe * .16, transform: `scale(${1.04 - observe * .015})`, filter: `saturate(${.62 + surfaces * .34}) brightness(${.68 + surfaces * .22})` }} />
           <div className="clean-room-grade" />
-          <img className="phased-clean-cage-product" src="/assets/aussiecare-cage-v1.webp" alt="" loading="lazy" decoding="async" style={{ opacity: .9 - observe * .2, transform: `translateY(${(1 - cleanScene) * 2}%) scale(${.94 + surfaces * .025})` }} />
+          <img className="phased-clean-cage-product" src={withBasePath('/assets/aussiecare-cage-v1.webp')} alt="" loading="lazy" decoding="async" style={{ opacity: .9 - observe * .2, transform: `translateY(${(1 - cleanScene) * 2}%) scale(${.94 + surfaces * .025})` }} />
           {CLEANING_VISUALS.map((visual) => {
             const enter = range(progress, visual.start, visual.start + .015);
             const exit = visual.end === 1 ? 0 : range(progress, visual.hold, visual.end);
             return (
               <div className="cleaning-step-visual" key={visual.key} role="img" aria-label={visual.description} style={{ opacity: enter * (1 - exit) }}>
                 <div className="cleaning-step-window">
-                  <img src="/assets/cage-cleaning-steps-v1.webp" alt="" loading="lazy" decoding="async" style={{ transform: `translate(${-visual.x * 50}%, ${-visual.y * 50}%)` }} />
+                  <img src={withBasePath('/assets/cage-cleaning-steps-v1.webp')} alt="" loading="lazy" decoding="async" style={{ transform: `translate(${-visual.x * 50}%, ${-visual.y * 50}%)` }} />
                 </div>
                 <b>{visual.label}</b>
               </div>

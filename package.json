@@ -1,6 +1,6 @@
 {
   "name": "aussiecare-pwa",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "PWA mobile-first y offline para aprender cuidados responsables del periquito australiano.",
   "private": true,
   "license": "MIT",
@@ -16,10 +16,13 @@
     "assets": "node scripts/build-phase-i-media.mjs",
     "dev": "vinext dev",
     "build": "vinext build",
+    "build:pages": "node scripts/build-pages.mjs",
     "start": "vinext start",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run build"
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern out",
+    "typecheck": "tsc --noEmit -p tsconfig.check.json",
+    "validate:pages": "node scripts/validate-pages-export.mjs",
+    "check": "npm run lint && npm run typecheck && npm run build",
+    "check:pages": "npm run lint && npm run typecheck && npm run build:pages && npm run validate:pages"
   },
   "dependencies": {
     "next": "16.2.6",
