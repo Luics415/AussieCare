@@ -48,6 +48,7 @@ export default function PhaseC({ onProgress, onBeatChange }: PhaseCProps) {
   const cageOpacity = 1 - range(progress, .59, .655);
   const toyFocusTop = beat.id === 'foraging' ? 19 : beat.id === 'wood' ? 34 : beat.id === 'rope' ? 50 : beat.id === 'mirror' ? 62 : 19;
   const toyFocusVisible = ['foraging', 'wood', 'rope', 'mirror'].includes(beat.id) ? 1 : 0;
+  const homeToPlayTransition = beat.id === 'perch-transition';
 
   return (
     <section className="phasec-experience" id="phase-c" ref={sectionRef} aria-label="Fase C: Mi hogar y Juega conmigo">
@@ -73,7 +74,7 @@ export default function PhaseC({ onProgress, onBeatChange }: PhaseCProps) {
             <div className="cage-feature cage-feature-perches" style={{ opacity: perches }}><i /><span>RAMAS NATURALES</span></div>
             <div className="cage-feature cage-feature-bowls" style={{ opacity: bowls }}><i /><span>RECIPIENTES</span></div>
             <img className="cage-natural-perch-detail" src={withBasePath('/assets/natural-perch-v1.webp')} alt="" loading="lazy" decoding="async" style={{ opacity: perchDetailOpacity }} />
-            <img className="cage-bud" src={withBasePath('/assets/bud-hero-perched-v3.webp')} alt="" loading="lazy" decoding="async" style={{ opacity: ready, transform: `translateY(${(1 - ready) * -20}px) scale(${.58 + ready * .08})` }} />
+            <img className="cage-bud" data-transition={homeToPlayTransition ? 'true' : 'false'} src={withBasePath('/assets/bud-hero-perched-v3.webp')} alt="" loading="lazy" decoding="async" style={{ opacity: ready, transform: `translateY(${(1 - ready) * -20}px) scale(${.58 + ready * .08})` }} />
           </div>
           <div className="cage-airway" style={{ opacity: ready }}><span>centro libre para moverse</span></div>
         </div>

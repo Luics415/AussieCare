@@ -107,6 +107,7 @@
   object-position: center;
   filter: drop-shadow(0 8px 12px #0005);
   transform-origin: center bottom;
+  transition: left .22s ease, top .22s ease, width .22s ease, height .22s ease;
 }
 .phasec-room-id {
   position: absolute;
@@ -602,6 +603,7 @@
 @media (prefers-reduced-motion: reduce) {
   .phasec-reading,
   .phasec-reading > i b { animation-duration: .001ms !important; }
+  .cage-real .cage-bud { transition-duration: .001ms !important; }
   .phasec-rail > span { transition-duration: .001ms !important; }
 }
 
@@ -621,14 +623,14 @@
 .cage-natural-perch-detail {
   position: absolute;
   z-index: 3;
-  left: 50%;
-  top: 61%;
-  width: min(82vw, 520px);
+  left: 54%;
+  top: 59%;
+  width: min(70vw, 500px);
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 16px 22px #0009);
-  translate: -50% -50%;
-  transform: rotate(-2deg);
+  transform: translate(-50%, -50%) scaleX(-1) rotate(1deg);
+  transform-origin: center;
 }
 .cage-feature-width { left: 25%; top: 28%; }
 .cage-feature-tray { left: 47%; top: 68%; }
@@ -636,6 +638,7 @@
 .cage-feature-perches { left: 37%; top: 37%; }
 .cage-feature-bowls { left: 69%; top: 42%; }
 .cage-real .cage-bud { left: 47%; top: 28%; width: 25%; height: 34%; }
+.cage-real .cage-bud[data-transition='true'] { left: 65%; top: 10%; width: 18%; height: 29%; }
 .cage-airway { top: 45%; left: 22%; right: 21%; }
 
 @media (min-width: 900px) {
@@ -646,6 +649,7 @@
   .cage-feature-perches { left: 54%; top: 34%; }
   .cage-feature-bowls { left: 75%; top: 30%; }
   .cage-real .cage-bud { left: 59%; top: 22%; width: 14%; height: 36%; }
-  .cage-natural-perch-detail { left: 66%; top: 67%; width: min(44vw, 560px); }
+  .cage-real .cage-bud[data-transition='true'] { left: 73%; top: 10%; width: 10%; height: 31%; }
+  .cage-natural-perch-detail { left: 66%; top: 65%; width: min(40vw, 520px); }
   .cage-airway { left: 46%; right: 12%; }
 }

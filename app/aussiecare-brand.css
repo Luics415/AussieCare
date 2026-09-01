@@ -113,24 +113,38 @@
 
 .aussiecare-signature {
   position: relative;
+  isolation: isolate;
   width: min(100%, 820px);
   aspect-ratio: 1.9;
   min-height: 190px;
   overflow: hidden;
-  color: #233d31;
-  border: 1px solid #58766573;
+  color: var(--cream);
+  border: 1px solid #36b7b45c;
   border-radius: 18px;
-  background: #d8e3b8;
-  box-shadow: 0 22px 65px #0004;
+  background:
+    radial-gradient(circle at 83% 25%, #63a43c2b 0 10%, transparent 31%),
+    linear-gradient(135deg, #2f5a47 0%, #1f4334 48%, #10241b 100%);
+  box-shadow: 0 22px 65px #0005, inset 0 0 0 1px #f3e9d20d;
 }
-.aussiecare-signature::after { content: ''; position: absolute; z-index: 1; left: 0; right: 0; bottom: 0; height: 7px; background: #c98d46; pointer-events: none; }
-.aussiecare-signature-anchor { position: absolute; z-index: 1; left: 31%; top: -14%; color: #233d31; opacity: .09; font: 400 clamp(150px, 29vw, 265px)/1 Georgia, serif; transform: rotate(-3deg); pointer-events: none; }
-.aussiecare-signature-copy { position: absolute; z-index: 3; left: 7%; top: 22%; width: 59%; }
-.aussiecare-signature-name { display: block; width: 91%; height: auto; object-fit: contain; object-position: left center; filter: drop-shadow(0 5px 10px #0003); }
-.aussiecare-signature-copy p { margin: 13px 0 0 7%; color: #2f493d; font: 500 clamp(10px, 1.7vw, 18px)/1 Georgia, serif; }
-.aussiecare-signature-copy i { color: var(--yellow); font-style: normal; }
-.aussiecare-signature-copy b { color: var(--cobalt); font-weight: 700; }
-.aussiecare-signature-budgies { position: absolute; z-index: 2; right: 3%; bottom: -12%; width: 39%; height: 79%; object-fit: contain; object-position: center bottom; mix-blend-mode: multiply; }
+.aussiecare-signature::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  right: -4%;
+  bottom: -28%;
+  width: 49%;
+  height: 125%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, var(--cream) 0 52%, #f3e9d2d8 61%, transparent 72%);
+  pointer-events: none;
+}
+.aussiecare-signature::after { content: ''; position: absolute; z-index: 4; left: 0; right: 0; bottom: 0; height: 7px; background: linear-gradient(90deg, var(--cobalt), var(--turquoise) 52%, var(--yellow)); pointer-events: none; }
+.aussiecare-signature-anchor { position: absolute; z-index: 1; left: 27%; top: -14%; color: var(--cream); opacity: .17; font: 400 clamp(155px, 30vw, 275px)/1 'Segoe UI Symbol', 'Noto Sans Symbols 2', sans-serif; text-shadow: 0 0 34px #36b7b43d; transform: rotate(-7deg); pointer-events: none; }
+.aussiecare-signature-copy { position: absolute; z-index: 3; left: 7%; top: 21%; width: 61%; }
+.aussiecare-signature-name { display: block; width: 91%; height: auto; object-fit: contain; object-position: left center; filter: brightness(0) invert(93%) sepia(12%) saturate(492%) hue-rotate(344deg) brightness(105%) contrast(91%) drop-shadow(0 5px 11px #0005); }
+.aussiecare-signature-copy p { margin: 10px 0 0 7%; color: var(--cream); font: 600 clamp(10px, 1.7vw, 18px)/1.1 Arial, Helvetica, sans-serif; letter-spacing: .035em; }
+.aussiecare-signature-copy b { margin-left: .35em; color: var(--yellow); font-weight: 800; }
+.aussiecare-signature-budgies { position: absolute; z-index: 2; right: 2%; bottom: -12%; width: 40%; height: 80%; object-fit: contain; object-position: center bottom; mix-blend-mode: multiply; filter: saturate(1.08) contrast(1.02); }
 .aussiecare-signature[data-compact='true'] { min-height: 150px; border-radius: 13px; }
 
 @media (max-width: 520px) {
@@ -139,10 +153,11 @@
   .aussiecare-explore-brand small { max-width: 118px; }
   .aussiecare-explore-actions { gap: 5px; }
   .aussiecare-signature { aspect-ratio: 1.7; min-height: 205px; }
-  .aussiecare-signature-anchor { left: 28%; top: -5%; font-size: clamp(142px, 49vw, 215px); }
-  .aussiecare-signature-copy { top: 24%; }
+  .aussiecare-signature::before { right: -11%; width: 59%; }
+  .aussiecare-signature-anchor { left: 19%; top: -4%; opacity: .19; font-size: clamp(148px, 51vw, 220px); }
+  .aussiecare-signature-copy { top: 23%; width: 64%; }
   .aussiecare-signature-name { width: 95%; }
-  .aussiecare-signature-copy p { width: 125%; margin-top: 11px; font-size: 9px; }
+  .aussiecare-signature-copy p { width: 125%; margin-top: 8px; font-size: 9px; }
   .aussiecare-signature-budgies { right: -3%; width: 45%; height: 76%; }
 }
 
