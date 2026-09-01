@@ -91,7 +91,7 @@ const cssFiles = exportedFiles.filter((file) => file.endsWith('.css'));
 const rootHtmlPath = path.join(outputRoot, 'index.html');
 if (await isFile(rootHtmlPath)) {
   const rootHtml = await fs.readFile(rootHtmlPath, 'utf8');
-  const configuredOrigin = (process.env.NEXT_PUBLIC_SITE_ORIGIN ?? 'https://luics415.github.io').replace(/\/$/, '');
+  const configuredOrigin = new URL(process.env.NEXT_PUBLIC_SITE_ORIGIN ?? 'https://luics415.github.io').origin;
   const socialCardUrl = `${configuredOrigin}${basePath}/brand/aussiecare-share-v1.png`;
   for (const marker of [
     'property="og:image"',
