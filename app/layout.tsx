@@ -14,6 +14,7 @@ import ServiceWorkerRegistration from './service-worker-registration';
 import { withBasePath } from './base-path';
 
 const configuredSiteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN?.trim();
+const socialCard = withBasePath('/brand/aussiecare-share-v1.png');
 
 export const metadata: Metadata = {
   metadataBase: configuredSiteOrigin
@@ -37,15 +38,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_MX',
+    url: withBasePath('/'),
+    siteName: 'AussieCare',
     title: 'AussieCare · Periquitos Australianos',
     description: 'Guía visual para comprender y cuidar a tu periquito.',
-    images: [{ url: withBasePath('/og.png'), width: 1200, height: 630, alt: 'Jett en un paisaje australiano al amanecer' }],
+    images: [{ url: socialCard, width: 1200, height: 630, alt: 'Firma de Luics415 para AussieCare junto a dos periquitos ilustrados' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'AussieCare · Periquitos Australianos',
     description: 'Guía visual para comprender y cuidar a tu periquito.',
-    images: [withBasePath('/og.png')],
+    images: [socialCard],
   },
 };
 

@@ -11,6 +11,7 @@ const requiredFiles = [
   '404.html',
   'consulta/index.html',
   'manifest.webmanifest',
+  'brand/aussiecare-share-v1.png',
   'sw.js',
   '.nojekyll',
 ];
@@ -86,6 +87,21 @@ if (await isFile(workerPath)) {
 const exportedFiles = await walk(outputRoot);
 const htmlFiles = exportedFiles.filter((file) => file.endsWith('.html'));
 const cssFiles = exportedFiles.filter((file) => file.endsWith('.css'));
+
+const rootHtmlPath = path.join(outputRoot, 'index.html');
+if (await isFile(rootHtmlPath)) {
+  const rootHtml = await fs.readFile(rootHtmlPath, 'utf8');
+  const configuredOrigin = (process.env.NEXT_PUBLIC_SITE_ORIGIN ?? 'https://luics415.github.io').replace(/\/$/, '');
+  const socialCardUrl = `${configuredOrigin}${basePath}/brand/aussiecare-share-v1.png`;
+  for (const marker of [
+    'property="og:image"',
+    'name="twitter:card"',
+    'content="summary_large_image"',
+    socialCardUrl,
+  ]) {
+    if (!rootHtml.includes(marker)) failures.push(`La portada no contiene el metadato social requerido: ${marker}`);
+  }
+}
 
 for (const htmlFile of htmlFiles) {
   const html = await fs.readFile(htmlFile, 'utf8');

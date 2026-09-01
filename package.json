@@ -14,6 +14,7 @@
   },
   "scripts": {
     "assets": "node scripts/build-phase-i-media.mjs",
+    "assets:social": "node scripts/build-social-card.mjs",
     "dev": "vinext dev",
     "build": "vinext build",
     "build:pages": "node scripts/build-pages.mjs",
