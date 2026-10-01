@@ -23,8 +23,7 @@ AussieCare reúne dos experiencias que comparten una sola base de conocimiento:
 
 No utiliza cuentas, correo, inicio de sesión, base de datos ni un backend innecesario. La PWA prepara el núcleo de Consulta para trabajar sin conexión y permite guardar opcionalmente la película completa.
 
-**Aplicación en Vercel (Recomendado):** [aussiecare.vercel.app](https://aussiecare.vercel.app/)  
-**Espejo en GitHub Pages:** [luics415.github.io/AussieCare](https://luics415.github.io/AussieCare/)
+**Aplicación pública:** [luics415.github.io/AussieCare](https://luics415.github.io/AussieCare/)
 
 > [!IMPORTANT]
 > AussieCare es material educativo. No diagnostica ni sustituye a un veterinario con experiencia en aves. Dificultad respiratoria, sangrado, convulsión, traumatismo, debilidad extrema o incapacidad para posarse requieren atención profesional inmediata.
