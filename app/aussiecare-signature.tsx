@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element -- The signature composes transparent brand assets without an image loader. */
+/* eslint-disable @next/next/no-img-element -- The signature banner renders the official brand artwork. */
 import { withBasePath } from './base-path';
 
 type AussieCareSignatureProps = {
@@ -7,24 +7,21 @@ type AussieCareSignatureProps = {
 
 export default function AussieCareSignature({ compact = false }: AussieCareSignatureProps) {
   return (
-    <div className="aussiecare-signature" data-compact={compact ? 'true' : 'false'} role="group" aria-label="Firma de Luics415 para AussieCare">
-      <span className="aussiecare-signature-anchor" aria-hidden="true">⚓︎</span>
-      <div className="aussiecare-signature-copy">
-        <span
-          className="aussiecare-signature-name"
-          role="img"
-          aria-label="Luics415"
-          style={{
-            WebkitMaskImage: `url("${withBasePath('/brand/luics415-signature.webp')}")`,
-            maskImage: `url("${withBasePath('/brand/luics415-signature.webp')}")`,
-          }}
-        />
-        <p>Software Developer <b>AussieCare</b></p>
-      </div>
-      <span className="aussiecare-signature-seeds" aria-hidden="true">
-        <i /><i /><i /><i /><i /><i /><i /><i />
-      </span>
-      <img className="aussiecare-signature-budgies" src={withBasePath('/brand/signature-budgies.webp')} alt="Dos periquitos ilustrados, uno azul y uno amarillo con verde" />
-    </div>
+    <figure
+      className="aussiecare-signature"
+      data-compact={compact ? 'true' : 'false'}
+      role="group"
+      aria-label="Firma oficial de Luics415 para AussieCare"
+    >
+      <img
+        className="aussiecare-signature-banner-img"
+        src={withBasePath('/brand/aussiecare-share-v1.png')}
+        alt="Firma oficial de Luics415 para AussieCare junto a los dos periquitos australianos"
+        width={1200}
+        height={630}
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
   );
 }
